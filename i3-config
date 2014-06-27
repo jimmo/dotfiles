@@ -1,5 +1,12 @@
+exec xfsettingsd
+exec xfce4-power-manager --restart
+exec xscreensaver
+exec wicd-client --tray
+
 set $mod Mod4
-font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+
+font pango:Droid Sans Mono 8
+
 floating_modifier $mod
 
 # start a terminal
@@ -23,10 +30,8 @@ bindsym $mod+d exec dmenu_run
 bindsym $mod+g exec google-chrome
 
 # volume control
-bindsym $mod+Prior exec amixer set Master 2dB+
-bindsym $mod+Next exec amixer set Master 2dB-
-bindsym $mod+Shift+Prior exec amixer set Master unmute
-bindsym $mod+Shift+Next exec amixer set Master mute
+bindsym XF86AudioLowerVolume exec amixer -c 1 -- sset Master playback 5dB-
+bindsym XF86AudioRaiseVolume exec amixer -c 1 -- sset Master playback 5dB+
 
 # change focus
 bindsym $mod+j focus left
