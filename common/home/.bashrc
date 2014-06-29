@@ -34,6 +34,9 @@ shopt -s globstar
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
+# Set default editor to vim.
+EDITOR="vim"
+
 # set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
@@ -77,15 +80,13 @@ xterm*|rxvt*)
   ;;
 esac
 
-# Set default editor to vim.
-EDITOR="vim"
-
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
   test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
   alias ls='ls --color=auto'
 
   GREP_OPTIONS="--color"
+  CLI_COLOR=1
 fi
 
 # Alias definitions.
