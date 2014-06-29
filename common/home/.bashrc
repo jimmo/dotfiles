@@ -68,10 +68,10 @@ else
 fi
 unset color_prompt force_color_prompt
 
-# If this is an xterm, show pwd in title.
+# If this is an xterm, show user@host: pwd in title.
 case "$TERM" in
 xterm*|rxvt*)
-  PS1='echo -ne "\033]0;${PWD/$HOME/~}\007";'"${PS1}"
+  PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
   ;;
 *)
   ;;
