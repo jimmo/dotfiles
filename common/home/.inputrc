@@ -1,0 +1,9 @@
+$include /etc/inputrc
+
+$if Bash
+  Space: magic-space
+  C-Space: shell-expand-line
+  C-M-c: insert-comment
+  "\e[B": history-search-forward
+  "\e[A": history-search-backward
+$endif
