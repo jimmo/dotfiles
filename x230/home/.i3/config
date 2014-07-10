@@ -1,0 +1,26 @@
+# screen lock
+bindsym $mod+l exec gnome-screensaver-command -l
+bindsym $mod+Shift+e exec gnome-session-quit
+
+# volume control
+bindsym $mod+m exec gnome-volume-control
+bindsym $mod+Prior exec amixer set Master 2dB+
+bindsym $mod+Next exec amixer set Master 2dB-
+bindsym $mod+Shift+Prior exec amixer set Master unmute
+bindsym $mod+Shift+Next exec amixer set Master mute
+
+# dock/undock
+bindsym $mod+Shift+underscore exec /home/musji/jim/bin/undock
+bindsym $mod+Shift+plus exec /home/musji/jim/bin/dock
+
+# display rotate
+bindsym $mod+Ctrl+Up exec xrandr --output LVDS1 --auto --rotate normal
+bindsym $mod+Ctrl+Left exec xrandr --output LVDS1 --auto --rotate left
+bindsym $mod+Ctrl+Right exec xrandr --output LVDS1 --auto --rotate right
+bindsym $mod+Ctrl+Down exec xrandr --output LVDS1 --auto --rotate inverted
+
+# move current workspace to external
+bindsym $mod+Shift+d exec /home/musji/jim/bin/movetoexternal
+
+exec /home/musji/jim/bin/xflux -l -33 -g 151
+exec gnome-sound-applet
