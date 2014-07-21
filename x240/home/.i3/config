@@ -4,7 +4,7 @@ exec xscreensaver
 exec wicd-client --tray
 
 # screen lock
-bindsym Scroll_Lock exec xscreensaver-command -lock
+bindsym $mod+l exec xscreensaver-command -lock
 
 # start chrome
 bindsym $mod+g exec google-chrome-touchscreen
