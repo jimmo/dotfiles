@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# For DEFAULT_HOST
+. ~/.dotfiles.conf
+
+ADB=/usr/local/google/android-studio/sdk/platform-tools/adb
+set -e
+
+REMOTE_HOST=$DEFAULT_HOST
+CONTROL_PATH="~/.ssh/control.adb.%l-%h-%p-%r"
+SSH_OPTIONS="-o ForwardX11=no -o ForwardX11Trusted=no -o ControlPath=$CONTROL_PATH"
+PORT_FORWARDS="-R5037:localhost:5037 -R9001:localhost:9001 -R9002:localhost:9002"
+
+if [[ "$1" == "exit" ]]; then
+  ssh $SSH_OPTIONS -O exit $REMOTE_HOST
+else
+  echo Starting local ADB server
+  adb start-server
+  adb root
+  echo Killing ADB server on $REMOTE_HOST
+  ssh $SSH_OPTIONS $REMOTE_HOST $ADB kill-server
+  echo Opening ADB tunnel to $REMOTE_HOST
+  ssh $SSH_OPTIONS $PORT_FORWARDS -f -N $REMOTE_HOST > /dev/null 2>&1
+fi

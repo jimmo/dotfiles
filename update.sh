@@ -20,4 +20,7 @@ done | sort | uniq | while read file; do
   for part in common $*; do
     [ -e $part/$base/$file ] && $prefix bash -c "cat $part/$base/$file >> $dest/$file"
   done
+  if [[ $file =~ ^bin/ ]]; then
+    chmod +x $dest/$file
+  fi
 done

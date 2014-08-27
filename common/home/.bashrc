@@ -104,3 +104,11 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+if [ -d /usr/local/google/android-studio ]; then
+  PATH=$PATH:/usr/local/google/android-studio/bin:/usr/local/google/android-studio/sdk/platform-tools:/usr/local/google/android-studio/sdk/tools
+fi
+
+if [ -d $HOME/bin ]; then
+  PATH=$PATH:$HOME/bin
+fi

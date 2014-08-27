@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# For DEFAULT_HOST
+. ~/.dotfiles.conf
+
+exec ssh $DEFAULT_HOST
