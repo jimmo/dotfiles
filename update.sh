@@ -17,7 +17,7 @@ done | sort | uniq | while read file; do
   #prefix="echo $prefix"
   $prefix mkdir -p `dirname $dest/$file`
   [ -e $dest/$file ] && $prefix bash -c "echo > $dest/$file"
-  for part in common $1; do
+  for part in common $*; do
     [ -e $part/$base/$file ] && $prefix bash -c "cat $part/$base/$file >> $dest/$file"
   done
 done
