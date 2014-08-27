@@ -1,26 +1,17 @@
+exec xfsettingsd
+exec xfce4-power-manager --restart
+exec xscreensaver
+exec nm-applet
+
 # screen lock
-bindsym $mod+l exec gnome-screensaver-command -l
-bindsym $mod+Shift+e exec gnome-session-quit
+bindsym $mod+l exec xscreensaver-command -lock
+
+# start chrome
+bindsym $mod+g exec google-chrome
 
 # volume control
-bindsym $mod+m exec gnome-volume-control
-bindsym $mod+Prior exec amixer set Master 2dB+
-bindsym $mod+Next exec amixer set Master 2dB-
-bindsym $mod+Shift+Prior exec amixer set Master unmute
-bindsym $mod+Shift+Next exec amixer set Master mute
+bindsym XF86AudioLowerVolume exec amixer -c 1 -- sset Master playback 5dB-
+bindsym XF86AudioRaiseVolume exec amixer -c 1 -- sset Master playback 5dB+
 
-# dock/undock
-bindsym $mod+Shift+underscore exec /home/musji/jim/bin/undock
-bindsym $mod+Shift+plus exec /home/musji/jim/bin/dock
-
-# display rotate
-bindsym $mod+Ctrl+Up exec xrandr --output LVDS1 --auto --rotate normal
-bindsym $mod+Ctrl+Left exec xrandr --output LVDS1 --auto --rotate left
-bindsym $mod+Ctrl+Right exec xrandr --output LVDS1 --auto --rotate right
-bindsym $mod+Ctrl+Down exec xrandr --output LVDS1 --auto --rotate inverted
-
-# move current workspace to external
-bindsym $mod+Shift+d exec /home/musji/jim/bin/movetoexternal
-
-exec /home/musji/jim/bin/xflux -l -33 -g 151
-exec gnome-sound-applet
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
