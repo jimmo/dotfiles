@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 for dir in common $*; do
   ([ -d "$dir" ] && cd $dir && find . -type f)
