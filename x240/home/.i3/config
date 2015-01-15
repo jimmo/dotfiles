@@ -2,6 +2,7 @@ exec xfsettingsd
 exec xfce4-power-manager --restart
 exec xscreensaver
 exec wicd-client --tray
+exec syndaemon -i 1.5 -t -k -d
 
 # screen lock
 bindsym $mod+l exec xscreensaver-command -lock
