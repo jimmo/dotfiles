@@ -56,3 +56,5 @@ function vimbuild() {
   fi
   while true; do cat /tmp/vimbuild > /dev/null; "$@"; echo Done.; echo; done
 }
+
+alias resudo='sudo $(history -p \!\!)'
