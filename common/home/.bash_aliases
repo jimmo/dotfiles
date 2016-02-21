@@ -58,3 +58,27 @@ function vimbuild() {
 }
 
 alias resudo='sudo $(history -p \!\!)'
+
+function adb-screenshot() {
+  # Takes a screenshot on the device and saves the resulting png locally.
+  # Usage:
+  # $ adb-n7
+  # $ adb-screenshot [filename]
+  file=screen-`date '+%Y%m%d-%H%M%S'`.png
+  adb shell screencap -p /sdcard/$file
+  adb pull /sdcard/$file ${1:-$file}
+  adb shell rm /sdcard/$file
+}
+
+function adb-device() {
+  # Sets ANDROID_SERIAL so all future adb invocations use that device.
+  # Usage:
+  # $ adb-device Device_Type
+  # e.g. $ adb-device Nexus_7
+  export ANDROID_SERIAL=`adb devices -l | grep -i $1 | awk '{print $1}'`;
+}
+
+# Handy wrappers for adb-device.
+alias adb-n4="adb-device Nexus_4"
+alias adb-n5="adb-device Nexus_5"
+alias adb-n7="adb-device Nexus_7"

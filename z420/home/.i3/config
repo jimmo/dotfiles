@@ -2,20 +2,12 @@ exec xfsettingsd
 exec xfce4-power-manager --restart
 exec xscreensaver
 exec nm-applet
-exec syndaemon -i 1.5 -t -k -d
 
 # screen lock
 bindsym $mod+l exec xscreensaver-command -lock
 
 # start chrome
-bindsym $mod+g exec google-chrome-touchscreen
-
-# volume control
-bindsym XF86AudioLowerVolume exec amixer -c 1 -- sset Master playback 5dB-
-bindsym XF86AudioRaiseVolume exec amixer -c 1 -- sset Master playback 5dB+
+bindsym $mod+g exec google-chrome
 
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-
-# Suspend
-bindsym $mod+Shift+s exec sudo pm-suspend
