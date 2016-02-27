@@ -1,7 +1,5 @@
 set $mod Mod4
 
-font pango:Droid Sans Mono 8
-
 floating_modifier $mod
 
 exec compton -bCG

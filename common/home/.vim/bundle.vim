@@ -24,7 +24,8 @@ Bundle 'bling/vim-bufferline'
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'wombat'
 let g:airline#extensions#bufferline#overwrite_variables = 0
-Bundle 'bling/vim-airline'
+Bundle 'vim-airline/vim-airline'
+Bundle 'vim-airline/vim-airline-themes'
 
 filetype plugin indent on
 
