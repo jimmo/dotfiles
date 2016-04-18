@@ -1,18 +1,16 @@
-exec xfsettingsd
-exec xfce4-power-manager --restart
-exec xscreensaver
-exec nm-applet
-exec syndaemon -i 1.5 -t -k -d
+# start chrome
+bindsym $mod+g exec chromium --force-device-scale-factor=1.25
 
 # screen lock
-bindsym $mod+l exec xscreensaver-command -lock
+bindsym $mod+l exec i3lock
 
-# start chrome
-bindsym $mod+g exec google-chrome-touchscreen
+# network manager
+exec nm-applet
+
+# touchpad
+exec syndaemon -i 1.5 -t -k -d
 
 # volume control
 bindsym XF86AudioLowerVolume exec amixer -c 1 -- sset Master playback 5dB-
 bindsym XF86AudioRaiseVolume exec amixer -c 1 -- sset Master playback 5dB+
 
-# Suspend
-bindsym $mod+Shift+s exec sudo pm-suspend
