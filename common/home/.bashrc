@@ -35,8 +35,7 @@ shopt -s globstar
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 # Set default editor to emacs.
-EDITOR="emacs"
-GIT_EDITOR="emacs"
+export EDITOR="emacs"
 
 # set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
@@ -114,7 +113,4 @@ if [ -d $HOME/bin ]; then
   PATH=$PATH:$HOME/bin
 fi
 
-if [ -d $HOME/src/go ]; then
-  export GOPATH=$HOME/src/go
-  PATH=$PATH:${GOPATH//://bin:}/bin
-fi
+export GOPATH=$HOME
