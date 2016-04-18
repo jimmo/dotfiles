@@ -55,14 +55,19 @@
   (add-hook 'before-save-hook 'gofmt-before-save)
   ;; Add flymake support for go.
   (require 'flymake-go)
+  (flymake-mode)
   ;; Auto-complete support
-  (require 'go-autocomplete)
-  (auto-complete-mode)
+  (auto-complete-mode 1)
   ;; Compile support
   (if (not (string-match "go build" compile-command))
       (set (make-local-variable 'compile-command)
-           "go build -v && go test -v && go vet")))
+           "go build -v && go test -v && go vet"))
+  ;; 8-wide tabs are too wide.
+  (setq tab-width 2))
 (add-hook 'go-mode-hook 'jim-go-mode)
+(with-eval-after-load 'go-mode
+  (require 'go-autocomplete))
+
 
 ;; Shell
 (defun jim-shell-mode ()
