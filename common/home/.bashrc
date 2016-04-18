@@ -36,6 +36,7 @@ shopt -s globstar
 
 # Set default editor to emacs.
 EDITOR="emacs"
+GIT_EDITOR="emacs"
 
 # set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
