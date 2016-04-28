@@ -1,9 +1,13 @@
+
 ;; Set by emacs.
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("8f0334c430540bf45dbcbc06184a2e8cb01145f0ae1027ce6b1c40876144c0c9" "e87a2bd5abc8448f8676365692e908b709b93f2d3869c42a4371223aab7d9cf8" default)))
  '(flymake-allowed-file-name-masks
    (quote
     (("\\.\\(?:c\\(?:pp\\|xx\\|\\+\\+\\)?\\|CC\\)\\'" flymake-simple-make-init nil nil)
@@ -39,7 +43,7 @@
 (defun jim-install-packages ()
   (interactive)
   (defvar jim-packages
-    '(go-mode flymake-go dot-mode whole-line-or-region auto-complete go-autocomplete arduino-mode))
+    '(go-mode flymake-go dot-mode whole-line-or-region auto-complete go-autocomplete arduino-mode helm projectile helm-projectile))
   (package-refresh-contents)
   (dolist (p jim-packages)
     (when (not (package-installed-p p))
@@ -78,10 +82,18 @@
 
 ;; ---------------------- Features ---------------------------------------------
 
-;; Better command auto-completion.
-(require 'ido)
-(ido-mode t)
-
+;; Helm & Projectile
+(require 'helm-config)
+;;(require 'projectile)
+;;(projectile-global-mode)
+;;(setq projectile-completion-system 'helm)
+;;(helm-projectile-on)
+(helm-mode 1)
+(define-key global-map [remap find-file] 'helm-find-files)
+(define-key global-map [remap occur] 'helm-occur)
+(define-key global-map [remap list-buffers] 'helm-buffers-list)
+(define-key global-map [remap dabbrev-expand] 'helm-dabbrev)
+(global-set-key (kbd "M-x") 'helm-M-x)
 ;; Emulate vi's . to repeat last edit or command.
 ;; Enable by default for all files, but also enable-on-demand.
 (require 'dot-mode)
