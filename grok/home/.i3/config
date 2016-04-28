@@ -1,0 +1,9 @@
+# start chrome
+bindsym $mod+g exec chromium
+
+# screen lock
+bindsym $mod+l exec i3lock
+
+# network manager
+exec nm-applet
+
