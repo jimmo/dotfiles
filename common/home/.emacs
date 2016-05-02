@@ -1,4 +1,5 @@
 
+
 ;; Set by emacs.
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -43,7 +44,7 @@
 (defun jim-install-packages ()
   (interactive)
   (defvar jim-packages
-    '(go-mode flymake-go dot-mode whole-line-or-region auto-complete go-autocomplete arduino-mode helm projectile helm-projectile))
+    '(go-mode flymake-go dot-mode whole-line-or-region auto-complete go-autocomplete arduino-mode helm projectile helm-projectile flycheck))
   (package-refresh-contents)
   (dolist (p jim-packages)
     (when (not (package-installed-p p))
@@ -58,8 +59,7 @@
   ;; gofmt on save.
   (add-hook 'before-save-hook 'gofmt-before-save)
   ;; Add flymake support for go.
-  (require 'flymake-go)
-  (flymake-mode)
+  (flycheck-mode)
   ;; Auto-complete support
   (auto-complete-mode 1)
   ;; Compile support
@@ -79,6 +79,12 @@
   (setq sh-basic-offset 2
 	sh-indentation 2))
 (add-hook 'sh-mode-hook 'jim-shell-mode)
+
+;; Python
+(defun jim-python-mode ()
+  (flycheck-mode)
+  (setq python-tab-width 2))
+(add-hook 'python-mode-hook 'jim-python-mode)
 
 ;; ---------------------- Features ---------------------------------------------
 
@@ -249,5 +255,5 @@
 (global-set-key [home] 'smarter-beginning-of-line)
 
 ;; Enable flymake-mode
-(global-set-key "\C-cf" 'flymake-mode)
+(global-set-key "\C-cf" 'flycheck-mode)
 

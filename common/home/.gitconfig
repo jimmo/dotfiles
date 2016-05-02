@@ -1,0 +1,5 @@
+[user]
+	name = Jim Mussared
+	email = jim.mussared@gmail.com
+[credential]
+	helper = store
