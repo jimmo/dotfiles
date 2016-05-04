@@ -82,3 +82,8 @@ function adb-device() {
 alias adb-n4="adb-device Nexus_4"
 alias adb-n5="adb-device Nexus_5"
 alias adb-n7="adb-device Nexus_7"
+
+if [ -x /usr/bin/emacs-snapshot ]; then
+  alias emacs=emacs-snapshot
+fi
+

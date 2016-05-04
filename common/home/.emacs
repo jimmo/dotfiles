@@ -1,5 +1,6 @@
 
 
+
 ;; Set by emacs.
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -159,7 +160,10 @@
 (setq compilation-scroll-output t)
 
 ;; clang-format
-(load "/usr/share/clang/clang-format.el")
+(if (file-readable-p "/usr/share/clang/clang-format.el")
+    (load "/usr/share/clang/clang-format.el"))
+(if (file-readable-p "/usr/share/emacs/site-lisp/clang-format-3.6/clang-format.el")
+    (load "/usr/share/emacs/site-lisp/clang-format-3.6/clang-format.el"))
 (global-set-key [C-M-tab] 'clang-format-region)
 
 ;; ---------------------- Key bindings -----------------------------------------
