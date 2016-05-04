@@ -1,6 +1,3 @@
-
-
-
 ;; Set by emacs.
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -147,6 +144,7 @@
 (setq kept-old-versions 3)
 (setq kept-new-versions 10)
 (setq trim-versions-without-asking t)
+(setq delete-old-versions t)
 
 ;; Auto-save more often
 (setq auto-save-interval 150)
@@ -166,6 +164,12 @@
     (load "/usr/share/emacs/site-lisp/clang-format-3.6/clang-format.el"))
 (global-set-key [C-M-tab] 'clang-format-region)
 
+;; Save position in files.
+(require 'saveplace)
+(setq-default save-place t)
+(setq save-place-file "~/tmp/emacs_saved_places")
+(setq save-place-forget-unreadable-files nil)
+
 ;; ---------------------- Key bindings -----------------------------------------
 
 ;; Enable useful things disabled by default.
@@ -177,6 +181,9 @@
 
 ;; M-x is too hard to press.
 (global-set-key "\C-xx" 'execute-extended-command)
+
+;; Can't press C-S-backspace in terminal.
+(global-set-key (kbd "C-M-y") 'kill-whole-line)
 
 ;; C-w kills word (like bash) but will kill-region if there is one.
 (defun kill-region-or-word ()
