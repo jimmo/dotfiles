@@ -5,8 +5,6 @@ alias l='ls -CF'
 
 alias les=less
 
-alias :e=$EDITOR
-
 alias ..='cd ..'
 alias cd..='cd ..'
 alias ...='cd ../..'
