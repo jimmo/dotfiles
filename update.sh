@@ -34,8 +34,6 @@ done | sort | uniq | grep -v '[.]prepend$' | while read file; do
     # Enable for debugging.
     #prefix="echo $prefix"
 
-    # Create the destination directory.
-    $prefix mkdir -p `dirname $dest/$file`
     # Create the destination file if it doesn't exist.
     [ -e $dest/$file ] && echo > /tmp/dotfile
 
@@ -53,6 +51,7 @@ done | sort | uniq | grep -v '[.]prepend$' | while read file; do
       echo "$dest/$file [skip]"
     else
       echo "$dest/$file [update]"
+      $prefix mkdir -p `dirname $dest/$file`
       $prefix bash -c "cat /tmp/dotfile > $dest/$file"
     fi
 
