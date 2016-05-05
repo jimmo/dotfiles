@@ -86,7 +86,8 @@
 ;; Javascript
 (defun jim-js-mode ()
   (flycheck-mode)
-  (setq js-indent-level 2))
+  (setq js-indent-level 2
+	indent-tabls-mode nil))
 (add-hook 'js-mode-hook 'jim-js-mode)
 
 ;; ---------------------- Features ---------------------------------------------
