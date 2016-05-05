@@ -24,7 +24,8 @@ done | sort | uniq | grep -v '[.]prepend$' | while read file; do
     if [ $base = "home" ]; then
 	dest=$HOME
     fi
-    
+
+    # Don't allow directories other than /etc and $HOME.
     if [ -z "$dest" ]; then
 	echo "Not sure where to write $base"
 	exit 1
