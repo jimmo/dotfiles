@@ -42,7 +42,7 @@
 (defun jim-install-packages ()
   (interactive)
   (defvar jim-packages
-    '(go-mode flymake-go dot-mode whole-line-or-region auto-complete go-autocomplete arduino-mode helm projectile helm-projectile flycheck))
+    '(go-mode flymake-go dot-mode whole-line-or-region auto-complete go-autocomplete arduino-mode helm flycheck))
   (package-refresh-contents)
   (dolist (p jim-packages)
     (when (not (package-installed-p p))
