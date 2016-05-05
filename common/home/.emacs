@@ -170,6 +170,10 @@
 (setq save-place-file "~/tmp/emacs_saved_places")
 (setq save-place-forget-unreadable-files nil)
 
+;; Highlight matching braces/parens
+(show-paren-mode 1)
+(setq show-paren-delay 0)
+
 ;; ---------------------- Key bindings -----------------------------------------
 
 ;; Enable useful things disabled by default.
