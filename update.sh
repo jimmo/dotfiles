@@ -37,17 +37,24 @@ done | sort | uniq | grep -v '[.]prepend$' | while read file; do
     # Create the destination directory.
     $prefix mkdir -p `dirname $dest/$file`
     # Create the destination file if it doesn't exist.
-    [ -e $dest/$file ] && $prefix bash -c "echo > $dest/$file"
+    [ -e $dest/$file ] && echo > /tmp/dotfile
 
     # Prepend any '.prepend' files.
     for part in common $*; do
-	[ -e $part/$base/$file.prepend ] && $prefix bash -c "cat $part/$base/$file.prepend >> $dest/$file"
+	[ -e $part/$base/$file.prepend ] && cat $part/$base/$file.prepend >> /tmp/dotfile
     done
 
     # Then the main content.
     for part in common $*; do
-	[ -e $part/$base/$file ] && $prefix bash -c "cat $part/$base/$file >> $dest/$file"
+	[ -e $part/$base/$file ] && cat $part/$base/$file >> /tmp/dotfile
     done
+
+    if diff /tmp/dotfile $dest/$file > /dev/null; then
+      echo "$dest/$file [skip]"
+    else
+      echo "$dest/$file [update]"
+      $prefix bash -c "cat /tmp/dotfile > $dest/$file"
+    fi
 
     # Anything in bin/ gets +x.
     if [[ $file =~ ^bin/ ]]; then

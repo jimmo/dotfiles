@@ -70,7 +70,6 @@
 (with-eval-after-load 'go-mode
   (require 'go-autocomplete))
 
-
 ;; Shell
 (defun jim-shell-mode ()
   ;; Fix indentation.
@@ -83,6 +82,12 @@
   (flycheck-mode)
   (setq python-tab-width 2))
 (add-hook 'python-mode-hook 'jim-python-mode)
+
+;; Javascript
+(defun jim-js-mode ()
+  (flycheck-mode)
+  (setq js-indent-level 2))
+(add-hook 'js-mode-hook 'jim-js-mode)
 
 ;; ---------------------- Features ---------------------------------------------
 
@@ -269,6 +274,6 @@
 (global-set-key [end]  'smarter-end-of-line)
 (global-set-key [home] 'smarter-beginning-of-line)
 
-;; Enable flymake-mode
+;; Enable flymake-mode for languages that don't enable by default.
 (global-set-key "\C-cf" 'flycheck-mode)
 
