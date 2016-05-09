@@ -1,3 +1,4 @@
+
 ;; Set by emacs.
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -21,7 +22,8 @@
      ("\\.tex\\'" flymake-simple-tex-init nil nil)
      ("\\.idl\\'" flymake-simple-make-init nil nil)
      ("\\.ino\\'" flymake-simple-make-init nil nil))))
- '(inhibit-startup-screen t))
+ '(inhibit-startup-screen t)
+ '(python-indent-offset 2))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -80,14 +82,14 @@
 ;; Python
 (defun jim-python-mode ()
   (flycheck-mode)
-  (setq python-tab-width 2))
+  (setq indent-tabs-mode nil))
 (add-hook 'python-mode-hook 'jim-python-mode)
 
 ;; Javascript
 (defun jim-js-mode ()
   (flycheck-mode)
   (setq js-indent-level 2
-	indent-tabls-mode nil))
+	indent-tabs-mode nil))
 (add-hook 'js-mode-hook 'jim-js-mode)
 
 ;; ---------------------- Features ---------------------------------------------
