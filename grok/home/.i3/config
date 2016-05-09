@@ -7,3 +7,5 @@ bindsym $mod+l exec i3lock
 # network manager
 exec nm-applet
 
+# ssh to vm
+bindsym $mod+Shift+Return exec i3-sensible-terminal -e 'ssh grokvm'
