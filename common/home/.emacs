@@ -1,4 +1,5 @@
 
+
 ;; Set by emacs.
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -182,6 +183,45 @@
 (show-paren-mode 1)
 (setq show-paren-delay 0)
 
+(require 'thingatpt)
+
+;; Emacs provides isearch-yank-word, etc, but symbols are more useful.
+(defun isearch-yank-symbol ()
+  "*Put symbol at current point into search string."
+  (interactive)
+  (let ((sym (symbol-at-point)))
+    (if sym
+        (progn
+          (setq isearch-regexp t
+                isearch-string (concat "\\_<" (regexp-quote (symbol-name sym)) "\\_>")
+                isearch-message (mapconcat 'isearch-text-char-description isearch-string "")
+                isearch-yank-flag t))
+      (ding)))
+  (isearch-search-and-update))
+
+;; Replaces C-w while in isearch-mode.
+(defun jim-isearch-yank-word-or-char-from-beginning ()
+  "Move to beginning of word before yanking word in isearch-mode."
+  (interactive)
+  ;; Making this work after a search string is entered by user
+  ;; is too hard to do, so work only when search string is empty.
+  (if (= 0 (length isearch-string))
+      (beginning-of-thing 'symbol))
+  (isearch-yank-symbol)
+  ;; Revert to 'isearch-yank-word-or-char for subsequent calls
+  (substitute-key-definition 'my-isearch-yank-word-or-char-from-beginning 
+			     'isearch-yank-word-or-char
+			     isearch-mode-map))
+
+;; In isearch-mode, use our custom C-w handler.
+;; The point of this is to emulate Vim's '*' by hitting C-s C-w.
+(add-hook 'isearch-mode-hook
+ (lambda ()
+   "Activate my customized Isearch word yank command."
+   (substitute-key-definition 'isearch-yank-word-or-char 
+			      'jim-isearch-yank-word-or-char-from-beginning
+			      isearch-mode-map)))
+
 ;; ---------------------- Key bindings -----------------------------------------
 
 ;; Enable useful things disabled by default.
@@ -194,7 +234,7 @@
 ;; M-x is too hard to press.
 (global-set-key "\C-xx" 'execute-extended-command)
 
-;; Can't press C-S-backspace in terminal.
+;; Can't press C-S-backspace in terminal, so add an extra mapping.
 (global-set-key (kbd "C-M-y") 'kill-whole-line)
 
 ;; C-w kills word (like bash) but will kill-region if there is one.
@@ -203,6 +243,13 @@
   (call-interactively
    (if (use-region-p) 'kill-region 'backward-kill-word)))
 (global-set-key "\C-w" 'kill-region-or-word)
+
+;; When moving, move by symbol rather than by word.
+(defun backward-symbol (arg)
+  (interactive "p")
+  (forward-symbol (- arg)))
+(global-set-key (kbd "M-b") 'backward-symbol)
+(global-set-key (kbd "M-f") 'forward-symbol)
 
 ;; Repeat the last compile command (without confirmation).
 (global-set-key "\C-cc" 'recompile)
