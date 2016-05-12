@@ -93,6 +93,11 @@
 	indent-tabs-mode nil))
 (add-hook 'js-mode-hook 'jim-js-mode)
 
+;; C/C++
+(defun jim-c++-mode ()
+  (c-set-offset 'innamespace [0]))
+(add-hook 'c++-mode-hook 'jim-c++-mode)
+
 ;; ---------------------- Features ---------------------------------------------
 
 ;; Helm & Projectile
