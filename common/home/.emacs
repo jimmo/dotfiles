@@ -95,7 +95,8 @@
 
 ;; C/C++
 (defun jim-c++-mode ()
-  (c-set-offset 'innamespace [0]))
+  (c-set-offset 'innamespace [0])
+  (c-set-offset 'inextern-lang 0))
 (add-hook 'c++-mode-hook 'jim-c++-mode)
 
 ;; ---------------------- Features ---------------------------------------------
