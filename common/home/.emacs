@@ -45,7 +45,7 @@
 (defun jim-install-packages ()
   (interactive)
   (defvar jim-packages
-    '(go-mode flymake-go dot-mode whole-line-or-region auto-complete go-autocomplete arduino-mode helm flycheck))
+    '(go-mode flymake-go dot-mode whole-line-or-region auto-complete go-autocomplete arduino-mode helm flycheck less-css-mode))
   (package-refresh-contents)
   (dolist (p jim-packages)
     (when (not (package-installed-p p))
@@ -98,6 +98,13 @@
   (c-set-offset 'innamespace [0])
   (c-set-offset 'inextern-lang 0))
 (add-hook 'c++-mode-hook 'jim-c++-mode)
+
+;; CSS
+(defun jim-css-mode ()
+  (setq css-indent-offset 2
+	indent-tabs-mode nil
+	css-tab-mode 'indent))
+(add-hook 'css-mode-hook 'jim-css-mode)
 
 ;; ---------------------- Features ---------------------------------------------
 
