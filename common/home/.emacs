@@ -111,6 +111,8 @@
 ;; ---------------------- Features ---------------------------------------------
 
 ;; ido
+(require 'ido)
+(require 'ido-vertical-mode)
 (ido-mode)
 (ido-vertical-mode 1)
 (setq ido-enable-flex-matching t)
