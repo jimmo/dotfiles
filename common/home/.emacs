@@ -8,22 +8,22 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-	 (quote
-		("8f0334c430540bf45dbcbc06184a2e8cb01145f0ae1027ce6b1c40876144c0c9" "e87a2bd5abc8448f8676365692e908b709b93f2d3869c42a4371223aab7d9cf8" default)))
+   (quote
+    ("8f0334c430540bf45dbcbc06184a2e8cb01145f0ae1027ce6b1c40876144c0c9" "e87a2bd5abc8448f8676365692e908b709b93f2d3869c42a4371223aab7d9cf8" default)))
  '(flymake-allowed-file-name-masks
-	 (quote
-		(("\\.\\(?:c\\(?:pp\\|xx\\|\\+\\+\\)?\\|CC\\)\\'" flymake-simple-make-init nil nil)
-		 ("\\.xml\\'" flymake-xml-init nil nil)
-		 ("\\.html?\\'" flymake-xml-init nil nil)
-		 ("\\.cs\\'" flymake-simple-make-init nil nil)
-		 ("\\.p[ml]\\'" flymake-perl-init nil nil)
-		 ("\\.php[345]?\\'" flymake-php-init nil nil)
-		 ("\\.h\\'" flymake-master-make-header-init flymake-master-cleanup nil)
-		 ("\\.java\\'" flymake-simple-make-java-init flymake-simple-java-cleanup nil)
-		 ("[0-9]+\\.tex\\'" flymake-master-tex-init flymake-master-cleanup nil)
-		 ("\\.tex\\'" flymake-simple-tex-init nil nil)
-		 ("\\.idl\\'" flymake-simple-make-init nil nil)
-		 ("\\.ino\\'" flymake-simple-make-init nil nil)))))
+   (quote
+    (("\\.\\(?:c\\(?:pp\\|xx\\|\\+\\+\\)?\\|CC\\)\\'" flymake-simple-make-init nil nil)
+     ("\\.xml\\'" flymake-xml-init nil nil)
+     ("\\.html?\\'" flymake-xml-init nil nil)
+     ("\\.cs\\'" flymake-simple-make-init nil nil)
+     ("\\.p[ml]\\'" flymake-perl-init nil nil)
+     ("\\.php[345]?\\'" flymake-php-init nil nil)
+     ("\\.h\\'" flymake-master-make-header-init flymake-master-cleanup nil)
+     ("\\.java\\'" flymake-simple-make-java-init flymake-simple-java-cleanup nil)
+     ("[0-9]+\\.tex\\'" flymake-master-tex-init flymake-master-cleanup nil)
+     ("\\.tex\\'" flymake-simple-tex-init nil nil)
+     ("\\.idl\\'" flymake-simple-make-init nil nil)
+     ("\\.ino\\'" flymake-simple-make-init nil nil)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -85,7 +85,7 @@
 (defun my-python-mode ()
   (flycheck-mode)
   (setq-default indent-tabs-mode nil
-								python-indent-offset 2))
+		python-indent-offset 2))
 (add-hook 'python-mode-hook 'my-python-mode)
 
 ;; Javascript
@@ -155,10 +155,10 @@
 
 (defun make-auto-save-file-name ()
   (concat autosave-dir
-	   (if buffer-file-name
-		 (concat "#" (file-name-nondirectory buffer-file-name) "#")
-	     (expand-file-name
-	      (concat "#%" (buffer-name) "#")))))
+	  (if buffer-file-name
+	      (concat "#" (file-name-nondirectory buffer-file-name) "#")
+	    (expand-file-name
+	     (concat "#%" (buffer-name) "#")))))
 
 ;; Put backup files (ie foo~) in one place too. (The backup-directory-alist
 ;; list contains regexp=>directory mappings; filenames matching a regexp are
@@ -234,11 +234,11 @@
 ;; In isearch-mode, use our custom C-w handler.
 ;; The point of this is to emulate Vim's '*' by hitting C-s C-w.
 (add-hook 'isearch-mode-hook
- (lambda ()
-   "Activate my customized Isearch word yank command."
-   (substitute-key-definition 'isearch-yank-word-or-char
-			      'my-isearch-yank-word-or-char-from-beginning
-			      isearch-mode-map)))
+	  (lambda ()
+	    "Activate my customized Isearch word yank command."
+	    (substitute-key-definition 'isearch-yank-word-or-char
+				       'my-isearch-yank-word-or-char-from-beginning
+				       isearch-mode-map)))
 
 ;; ---------------------- Key bindings -----------------------------------------
 
