@@ -1,5 +1,6 @@
 
 
+
 ;; Set by emacs.
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -7,24 +8,22 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   (quote
-    ("8f0334c430540bf45dbcbc06184a2e8cb01145f0ae1027ce6b1c40876144c0c9" "e87a2bd5abc8448f8676365692e908b709b93f2d3869c42a4371223aab7d9cf8" default)))
+	 (quote
+		("8f0334c430540bf45dbcbc06184a2e8cb01145f0ae1027ce6b1c40876144c0c9" "e87a2bd5abc8448f8676365692e908b709b93f2d3869c42a4371223aab7d9cf8" default)))
  '(flymake-allowed-file-name-masks
-   (quote
-    (("\\.\\(?:c\\(?:pp\\|xx\\|\\+\\+\\)?\\|CC\\)\\'" flymake-simple-make-init nil nil)
-     ("\\.xml\\'" flymake-xml-init nil nil)
-     ("\\.html?\\'" flymake-xml-init nil nil)
-     ("\\.cs\\'" flymake-simple-make-init nil nil)
-     ("\\.p[ml]\\'" flymake-perl-init nil nil)
-     ("\\.php[345]?\\'" flymake-php-init nil nil)
-     ("\\.h\\'" flymake-master-make-header-init flymake-master-cleanup nil)
-     ("\\.java\\'" flymake-simple-make-java-init flymake-simple-java-cleanup nil)
-     ("[0-9]+\\.tex\\'" flymake-master-tex-init flymake-master-cleanup nil)
-     ("\\.tex\\'" flymake-simple-tex-init nil nil)
-     ("\\.idl\\'" flymake-simple-make-init nil nil)
-     ("\\.ino\\'" flymake-simple-make-init nil nil))))
- '(inhibit-startup-screen t)
- '(python-indent-offset 2))
+	 (quote
+		(("\\.\\(?:c\\(?:pp\\|xx\\|\\+\\+\\)?\\|CC\\)\\'" flymake-simple-make-init nil nil)
+		 ("\\.xml\\'" flymake-xml-init nil nil)
+		 ("\\.html?\\'" flymake-xml-init nil nil)
+		 ("\\.cs\\'" flymake-simple-make-init nil nil)
+		 ("\\.p[ml]\\'" flymake-perl-init nil nil)
+		 ("\\.php[345]?\\'" flymake-php-init nil nil)
+		 ("\\.h\\'" flymake-master-make-header-init flymake-master-cleanup nil)
+		 ("\\.java\\'" flymake-simple-make-java-init flymake-simple-java-cleanup nil)
+		 ("[0-9]+\\.tex\\'" flymake-master-tex-init flymake-master-cleanup nil)
+		 ("\\.tex\\'" flymake-simple-tex-init nil nil)
+		 ("\\.idl\\'" flymake-simple-make-init nil nil)
+		 ("\\.ino\\'" flymake-simple-make-init nil nil)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -34,6 +33,8 @@
 
 ;; Common Lisp.
 (require 'cl-lib)
+
+(setq inhibit-startup-screen t)
 
 ;; Package manager for ELPA (and add MELPA).
 (require 'package)
@@ -45,7 +46,7 @@
 (defun my-install-packages ()
   (interactive)
   (defvar my-packages
-    '(go-mode flymake-go dot-mode whole-line-or-region auto-complete go-autocomplete arduino-mode helm flycheck less-css-mode))
+    '(go-mode flymake-go dot-mode whole-line-or-region auto-complete go-autocomplete arduino-mode flycheck less-css-mode smex ido-vertical-mode))
   (package-refresh-contents)
   (dolist (p my-packages)
     (when (not (package-installed-p p))
@@ -83,7 +84,8 @@
 ;; Python
 (defun my-python-mode ()
   (flycheck-mode)
-  (setq-default indent-tabs-mode nil))
+  (setq-default indent-tabs-mode nil
+								python-indent-offset 2))
 (add-hook 'python-mode-hook 'my-python-mode)
 
 ;; Javascript
@@ -108,18 +110,16 @@
 
 ;; ---------------------- Features ---------------------------------------------
 
-;; Helm & Projectile
-(require 'helm-config)
-;;(require 'projectile)
-;;(projectile-global-mode)
-;;(setq projectile-completion-system 'helm)
-;;(helm-projectile-on)
-(helm-mode 1)
-(define-key global-map [remap find-file] 'helm-find-files)
-(define-key global-map [remap occur] 'helm-occur)
-(define-key global-map [remap list-buffers] 'helm-buffers-list)
-(define-key global-map [remap dabbrev-expand] 'helm-dabbrev)
-(global-set-key (kbd "M-x") 'helm-M-x)
+;; ido
+(ido-mode)
+(ido-vertical-mode 1)
+(setq ido-enable-flex-matching t)
+(setq ido-vertical-define-keys 'C-n-C-p-up-and-down)
+(defun my-ido-define-keys ()
+  (define-key ido-completion-map (kbd "<left>") 'ido-up-directory)
+  (define-key ido-completion-map (kbd "<right>") 'ido-exit-minibuffer))
+(add-hook 'ido-setup-hook 'my-ido-define-keys)
+
 ;; Emulate vi's . to repeat last edit or command.
 ;; Enable by default for all files, but also enable-on-demand.
 (require 'dot-mode)
@@ -240,15 +240,19 @@
 
 ;; ---------------------- Key bindings -----------------------------------------
 
+;; smex
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+
+;; M-x is too hard to press.
+(global-set-key "\C-xx" 'smex)
+
 ;; Enable useful things disabled by default.
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
 
 ;; Don't allow C-z (too easy to hit by accident).
 (global-unset-key (kbd "C-z"))
-
-;; M-x is too hard to press.
-(global-set-key "\C-xx" 'execute-extended-command)
 
 ;; Can't press C-S-backspace in terminal, so add an extra mapping.
 (global-set-key (kbd "C-M-y") 'kill-whole-line)
