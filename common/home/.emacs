@@ -42,12 +42,12 @@
 (package-initialize)
 
 ;; Function to install all required packages on a new machine.
-(defun jim-install-packages ()
+(defun my-install-packages ()
   (interactive)
-  (defvar jim-packages
+  (defvar my-packages
     '(go-mode flymake-go dot-mode whole-line-or-region auto-complete go-autocomplete arduino-mode helm flycheck less-css-mode))
   (package-refresh-contents)
-  (dolist (p jim-packages)
+  (dolist (p my-packages)
     (when (not (package-installed-p p))
       (package-install p))))
 
@@ -56,7 +56,7 @@
 ;; Go
 ;; Requires: go get github.com/rogpeppe/godef
 ;;           go get github.com/nsf/gocode
-(defun jim-go-mode ()
+(defun my-go-mode ()
   ;; gofmt on save.
   (add-hook 'before-save-hook 'gofmt-before-save)
   ;; Add flymake support for go.
@@ -69,42 +69,42 @@
            "go build -v && go test -v && go vet"))
   ;; 8-wide tabs are too wide.
   (setq-default tab-width 2))
-(add-hook 'go-mode-hook 'jim-go-mode)
+(add-hook 'go-mode-hook 'my-go-mode)
 (with-eval-after-load 'go-mode
   (require 'go-autocomplete))
 
 ;; Shell
-(defun jim-shell-mode ()
+(defun my-shell-mode ()
   ;; Fix indentation.
   (setq-default sh-basic-offset 2
 		sh-indentation 2))
-(add-hook 'sh-mode-hook 'jim-shell-mode)
+(add-hook 'sh-mode-hook 'my-shell-mode)
 
 ;; Python
-(defun jim-python-mode ()
+(defun my-python-mode ()
   (flycheck-mode)
   (setq-default indent-tabs-mode nil))
-(add-hook 'python-mode-hook 'jim-python-mode)
+(add-hook 'python-mode-hook 'my-python-mode)
 
 ;; Javascript
-(defun jim-js-mode ()
+(defun my-js-mode ()
   (flycheck-mode)
   (setq-default js-indent-level 2
 		indent-tabs-mode nil))
-(add-hook 'js-mode-hook 'jim-js-mode)
+(add-hook 'js-mode-hook 'my-js-mode)
 
 ;; C/C++
-(defun jim-c++-mode ()
+(defun my-c++-mode ()
   (c-set-offset 'innamespace [0])
   (c-set-offset 'inextern-lang 0))
-(add-hook 'c++-mode-hook 'jim-c++-mode)
+(add-hook 'c++-mode-hook 'my-c++-mode)
 
 ;; CSS
-(defun jim-css-mode ()
+(defun my-css-mode ()
   (setq-default css-indent-offset 2
 		indent-tabs-mode nil
 		css-tab-mode 'indent))
-(add-hook 'css-mode-hook 'jim-css-mode)
+(add-hook 'css-mode-hook 'my-css-mode)
 
 ;; ---------------------- Features ---------------------------------------------
 
@@ -216,7 +216,7 @@
   (isearch-search-and-update))
 
 ;; Replaces C-w while in isearch-mode.
-(defun jim-isearch-yank-word-or-char-from-beginning ()
+(defun my-isearch-yank-word-or-char-from-beginning ()
   "Move to beginning of word before yanking word in isearch-mode."
   (interactive)
   ;; Making this work after a search string is entered by user
@@ -235,7 +235,7 @@
  (lambda ()
    "Activate my customized Isearch word yank command."
    (substitute-key-definition 'isearch-yank-word-or-char
-			      'jim-isearch-yank-word-or-char-from-beginning
+			      'my-isearch-yank-word-or-char-from-beginning
 			      isearch-mode-map)))
 
 ;; ---------------------- Key bindings -----------------------------------------
@@ -282,7 +282,7 @@
     (indent-according-to-mode)))
 (global-set-key (kbd "C-o") 'open-next-line)
 
-;; Make M-o behave like vi's O command.
+;; Make C-M-o behave like vi's O command.
 (defun open-previous-line (arg)
   "Open a new line before the current one.
      See also `newline-and-indent'."
@@ -291,7 +291,17 @@
   (open-line arg)
   (when newline-and-indent
     (indent-according-to-mode)))
-(global-set-key (kbd "M-o") 'open-previous-line)
+(global-set-key (kbd "C-M-o") 'open-previous-line)
+
+;; M-o opens other file (#include or c->h).
+(defvar my-cpp-other-file-alist
+  '(("\\.cpp\\'" (".h"))
+    ("\\.cc\\'" (".h"))
+    ("\\.c\\'" (".h"))
+    ("\\.h\\'" (".cpp" ".cc" ".c"))
+    ))
+(setq-default ff-other-file-alist 'my-cpp-other-file-alist)
+(global-set-key (kbd "M-o") 'ff-find-other-file)
 
 ;; Make *-of-line smarter w.r.t. indentation.
 (defun smarter-do-it (eol-test skip-fun eol-fun)
