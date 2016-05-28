@@ -60,3 +60,7 @@ done | sort | uniq | grep -v '[.]prepend$' | while read file; do
 	chmod +x $dest/$file
     fi
 done
+
+# Compile .emacs --> .emacs.elc
+update_script=$PWD/update-emacs.el
+(cd ~; emacs -nw -q --script $update_script)

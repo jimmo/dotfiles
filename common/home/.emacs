@@ -68,7 +68,7 @@
       (set (make-local-variable 'compile-command)
            "go build -v && go test -v && go vet"))
   ;; 8-wide tabs are too wide.
-  (setq tab-width 2))
+  (setq-default tab-width 2))
 (add-hook 'go-mode-hook 'jim-go-mode)
 (with-eval-after-load 'go-mode
   (require 'go-autocomplete))
@@ -76,21 +76,21 @@
 ;; Shell
 (defun jim-shell-mode ()
   ;; Fix indentation.
-  (setq sh-basic-offset 2
-	sh-indentation 2))
+  (setq-default sh-basic-offset 2
+		sh-indentation 2))
 (add-hook 'sh-mode-hook 'jim-shell-mode)
 
 ;; Python
 (defun jim-python-mode ()
   (flycheck-mode)
-  (setq indent-tabs-mode nil))
+  (setq-default indent-tabs-mode nil))
 (add-hook 'python-mode-hook 'jim-python-mode)
 
 ;; Javascript
 (defun jim-js-mode ()
   (flycheck-mode)
-  (setq js-indent-level 2
-	indent-tabs-mode nil))
+  (setq-default js-indent-level 2
+		indent-tabs-mode nil))
 (add-hook 'js-mode-hook 'jim-js-mode)
 
 ;; C/C++
@@ -101,9 +101,9 @@
 
 ;; CSS
 (defun jim-css-mode ()
-  (setq css-indent-offset 2
-	indent-tabs-mode nil
-	css-tab-mode 'indent))
+  (setq-default css-indent-offset 2
+		indent-tabs-mode nil
+		css-tab-mode 'indent))
 (add-hook 'css-mode-hook 'jim-css-mode)
 
 ;; ---------------------- Features ---------------------------------------------
@@ -168,7 +168,7 @@
 (setq version-control t)
 (setq kept-old-versions 3)
 (setq kept-new-versions 10)
-(setq trim-versions-without-asking t)
+(setq-default trim-versions-without-asking t)
 (setq delete-old-versions t)
 
 ;; Auto-save more often
@@ -180,7 +180,7 @@
 (column-number-mode 1)
 
 ;; Scroll the compilation output to the bottom.
-(setq compilation-scroll-output t)
+(setq-default compilation-scroll-output t)
 
 ;; clang-format
 (if (file-readable-p "/usr/share/clang/clang-format.el")
@@ -197,7 +197,7 @@
 
 ;; Highlight matching braces/parens
 (show-paren-mode 1)
-(setq show-paren-delay 0)
+(setq-default show-paren-delay 0)
 
 (require 'thingatpt)
 
@@ -225,7 +225,7 @@
       (beginning-of-thing 'symbol))
   (isearch-yank-symbol)
   ;; Revert to 'isearch-yank-word-or-char for subsequent calls
-  (substitute-key-definition 'my-isearch-yank-word-or-char-from-beginning 
+  (substitute-key-definition 'my-isearch-yank-word-or-char-from-beginning
 			     'isearch-yank-word-or-char
 			     isearch-mode-map))
 
@@ -234,7 +234,7 @@
 (add-hook 'isearch-mode-hook
  (lambda ()
    "Activate my customized Isearch word yank command."
-   (substitute-key-definition 'isearch-yank-word-or-char 
+   (substitute-key-definition 'isearch-yank-word-or-char
 			      'jim-isearch-yank-word-or-char-from-beginning
 			      isearch-mode-map)))
 
@@ -277,14 +277,14 @@
   (interactive "p")
   (end-of-line)
   (open-line arg)
-  (next-line 1)
+  (forward-line 1)
   (when newline-and-indent
     (indent-according-to-mode)))
 (global-set-key (kbd "C-o") 'open-next-line)
 
 ;; Make M-o behave like vi's O command.
 (defun open-previous-line (arg)
-  "Open a new line before the current one. 
+  "Open a new line before the current one.
      See also `newline-and-indent'."
   (interactive "p")
   (beginning-of-line)
@@ -294,20 +294,11 @@
 (global-set-key (kbd "M-o") 'open-previous-line)
 
 ;; Make *-of-line smarter w.r.t. indentation.
-(defvar xemacsp (and (boundp 'xemacsp) xemacsp))
 (defun smarter-do-it (eol-test skip-fun eol-fun)
   "Helper for `smarter-beginning-of-line' and `smarter-end-of-line'."
-  ;; xemacs deactivates the region if you call (end-of-line) non-interactively
-  ;; so manually fix the region up.
-  (let* ((old-mark (if xemacsp (mark)
-		     (if mark-active (mark) nil)))
-	 (fixup-region
-	  (and xemacsp old-mark)))
-    (if (funcall eol-test)
-	(funcall skip-fun " \t")
-      (funcall eol-fun))
-    (when fixup-region
-      (push-mark old-mark t t))))
+  (if (funcall eol-test)
+      (funcall skip-fun " \t")
+    (funcall eol-fun)))
 (defun smarter-beginning-of-line ()
   "Toggles point between bol and first non-whitespace char in line."
   (interactive)
@@ -342,4 +333,3 @@
 
 ;; Enable flymake-mode for languages that don't enable by default.
 (global-set-key "\C-cf" 'flycheck-mode)
-
