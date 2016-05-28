@@ -131,6 +131,9 @@
 ;; if no region is selected. Also make yanking aware of whole-line kills.
 (require 'whole-line-or-region)
 
+;; Delete trailing whitespace on save.
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
 ;; Autoindent open-*-lines
 (defvar newline-and-indent t
   "Modify the behavior of the open-*-line functions to cause them to autoindent.")
