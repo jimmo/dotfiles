@@ -77,6 +77,7 @@
 ;; Shell
 (defun my-shell-mode ()
   ;; Fix indentation.
+  (auto-complete-mode 1)
   (setq-default sh-basic-offset 2
 		sh-indentation 2))
 (add-hook 'sh-mode-hook 'my-shell-mode)
@@ -84,6 +85,7 @@
 ;; Python
 (defun my-python-mode ()
   (flycheck-mode)
+  (auto-complete-mode 1)
   (setq-default indent-tabs-mode nil
 		python-indent-offset 2))
 (add-hook 'python-mode-hook 'my-python-mode)
@@ -91,18 +93,21 @@
 ;; Javascript
 (defun my-js-mode ()
   (flycheck-mode)
+  (auto-complete-mode 1)
   (setq-default js-indent-level 2
 		indent-tabs-mode nil))
 (add-hook 'js-mode-hook 'my-js-mode)
 
 ;; C/C++
 (defun my-c++-mode ()
+  (auto-complete-mode 1)
   (c-set-offset 'innamespace [0])
   (c-set-offset 'inextern-lang 0))
 (add-hook 'c++-mode-hook 'my-c++-mode)
 
 ;; CSS
 (defun my-css-mode ()
+  (auto-complete-mode 1)
   (setq-default css-indent-offset 2
 		indent-tabs-mode nil
 		css-tab-mode 'indent))
