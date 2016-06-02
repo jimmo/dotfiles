@@ -264,11 +264,16 @@
 ;; Can't press C-S-backspace in terminal, so add an extra mapping.
 (global-set-key (kbd "C-M-y") 'kill-whole-line)
 
-;; C-w kills word (like bash) but will kill-region if there is one.
+;; C-w kills symbol but will kill-region if there is one.
+(defun kill-symbol-at-point ()
+  (interactive)
+  (let* ((bounds (bounds-of-thing-at-point 'symbol)))
+    (when bounds
+      (kill-region (car bounds) (cdr bounds)))))
 (defun kill-region-or-word ()
   (interactive)
   (call-interactively
-   (if (use-region-p) 'kill-region 'backward-kill-word)))
+   (if (use-region-p) 'kill-region 'kill-symbol-at-point)))
 (global-set-key "\C-w" 'kill-region-or-word)
 
 ;; When moving, move by symbol rather than by word.
