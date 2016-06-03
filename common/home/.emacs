@@ -267,9 +267,10 @@
 ;; C-w kills symbol but will kill-region if there is one.
 (defun kill-symbol-at-point ()
   (interactive)
-  (let* ((bounds (bounds-of-thing-at-point 'symbol)))
-    (when bounds
-      (kill-region (car bounds) (cdr bounds)))))
+  (let* ((bounds (bounds-of-thing-at-point 'word)))
+    (if bounds
+	(kill-region (car bounds) (cdr bounds))
+      (call-interactively 'backward-kill-word))))
 (defun kill-region-or-word ()
   (interactive)
   (call-interactively
