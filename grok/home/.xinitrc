@@ -5,5 +5,6 @@ xset dpms 120 0 0
 setxkbmap -option ctrl:nocaps
 
 eval $(ssh-agent -s)
+ssh-add ~/.ssh/id_rsa
 
 exec i3
