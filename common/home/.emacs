@@ -198,7 +198,9 @@
 
 ;; Save position in files.
 (require 'saveplace)
-(setq-default save-place t)
+(if (fboundp #'save-place-mode)
+  (save-place-mode +1)
+  (setq-default save-place t))
 (setq save-place-file "~/tmp/emacs_saved_places")
 (setq save-place-forget-unreadable-files nil)
 
