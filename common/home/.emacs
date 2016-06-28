@@ -198,7 +198,7 @@
 
 ;; Save position in files.
 (require 'saveplace)
-(if (fboundp #'save-place-mode)
+(if (fboundp 'save-place-mode)
   (save-place-mode +1)
   (setq-default save-place t))
 (setq save-place-file "~/tmp/emacs_saved_places")
@@ -362,3 +362,7 @@
 
 ;; Enable flymake-mode for languages that don't enable by default.
 (global-set-key "\C-cf" 'flycheck-mode)
+
+;; Replace zap-to-char with zap-up-to-char.
+(autoload 'zap-up-to-char "misc" "" 'interactive)
+(global-set-key "\M-z" 'zap-up-to-char)
