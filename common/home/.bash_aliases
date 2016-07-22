@@ -84,3 +84,6 @@ alias adb-n7="adb-device Nexus_7"
 if [ -e ~/.bash_aliases.local ]; then
   source ~/.bash_aliases.local
 fi
+
+alias weather='curl http://wttr.in/sydney'
+alias moon='curl http://wttr.in/Moon'
