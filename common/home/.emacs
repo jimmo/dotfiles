@@ -275,6 +275,7 @@
 
 ;; Can't press C-S-backspace in terminal, so add an extra mapping.
 (global-set-key (kbd "C-M-y") 'kill-whole-line)
+(global-set-key (kbd "C-|") 'kill-whole-line)
 
 ;; C-w kills symbol but will kill-region if there is one.
 (defun kill-symbol-at-point ()
