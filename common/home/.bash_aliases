@@ -87,3 +87,7 @@ fi
 
 alias weather='curl http://wttr.in/sydney'
 alias moon='curl http://wttr.in/Moon'
+
+if [ -e /usr/bin/octave-cli ]; then
+  alias octave="octave --no-gui"
+fi
