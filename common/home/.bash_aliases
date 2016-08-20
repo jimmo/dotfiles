@@ -91,3 +91,5 @@ alias moon='curl http://wttr.in/Moon'
 if [ -e /usr/bin/octave-cli ]; then
   alias octave="octave --no-gui"
 fi
+
+alias microscope='vlc v4l:// :v4l-vdev="/dev/video0"'
