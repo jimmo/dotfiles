@@ -35,7 +35,7 @@ done | sort | uniq | grep -v '[.]prepend$' | while read file; do
     #prefix="echo $prefix"
 
     # Create the temporary output file.
-    echo > /tmp/dotfile
+    echo -n > /tmp/dotfile
 
     # Prepend any '.prepend' files.
     for part in common $*; do
