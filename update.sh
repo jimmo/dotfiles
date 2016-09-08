@@ -34,8 +34,8 @@ done | sort | uniq | grep -v '[.]prepend$' | while read file; do
     # Enable for debugging.
     #prefix="echo $prefix"
 
-    # Create the destination file if it doesn't exist.
-    [ -e $dest/$file ] && echo > /tmp/dotfile
+    # Create the temporary output file.
+    echo > /tmp/dotfile
 
     # Prepend any '.prepend' files.
     for part in common $*; do
