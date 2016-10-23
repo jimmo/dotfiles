@@ -101,3 +101,12 @@ function github() {
   mkdir ~/src/github.com/$url
   (cd ~/src/github.com/$url; git clone $1)
 }
+
+function microbit() {
+  device=`lsblk -o NAME,VENDOR,MODEL | grep MBED | grep VFS | cut -d' ' -f1 | head -n1`
+  if [ -z $device ]; then
+    echo 'No micro:bit!'
+    return
+  fi
+  cd `udisksctl mount -b /dev/$device | grep 'Mounted ' | grep -o '/run/media.*' | cut -c1- | sed 's/.$//g'`
+}
