@@ -111,3 +111,12 @@ function microbit() {
   fi
   cd `udisksctl mount -b /dev/$device | grep 'Mounted ' | grep -o '/run/media.*' | cut -c1- | sed 's/.$//g'`
 }
+
+function usbkey() {
+  cd `udisksctl mount -b ${1:-/dev/sdb1} 2>&1 | grep 'ounted ' | grep -o '/run/media.*' | cut -c1- | sed "s/['.]*$//g"`
+}
+
+function unusbkey() {
+  pwd | grep '/run/media/' && cd
+  udisksctl unmount -b ${1:-/dev/sdb1}
+}
