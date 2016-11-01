@@ -7,4 +7,6 @@ setxkbmap -option ctrl:nocaps
 eval $(ssh-agent -s)
 ssh-add ~/.ssh/id_rsa
 
+xscreensaver &
+
 exec i3

@@ -2,7 +2,7 @@
 bindsym $mod+g exec chromium
 
 # screen lock
-bindsym $mod+l exec i3lock
+bindsym $mod+l exec xscreensaver-command -lock
 
 # network manager
 exec nm-applet
