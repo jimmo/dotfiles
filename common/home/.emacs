@@ -102,6 +102,7 @@
 
 ;; Disable jshint
 ;; http://codewinds.com/blog/2015-04-02-emacs-flycheck-eslint-jsx.html
+;; sudo npm install -g eslint babel-eslint eslint-plugin-react
 (setq-default flycheck-disabled-checkers
 	      (append flycheck-disabled-checkers
 		      '(javascript-jshint json-jsonlist)))
