@@ -46,13 +46,15 @@
 (defun my-install-packages ()
   (interactive)
   (defvar my-packages
-    '(go-mode flymake-go dot-mode whole-line-or-region auto-complete go-autocomplete arduino-mode flycheck less-css-mode smex ido-vertical-mode))
+    '(go-mode flymake-go dot-mode whole-line-or-region auto-complete go-autocomplete arduino-mode flycheck less-css-mode smex ido-vertical-mode web-mode js2-mode json-mode))
   (package-refresh-contents)
   (dolist (p my-packages)
     (when (not (package-installed-p p))
       (package-install p))))
 
 ;; ---------------------- Language modes ---------------------------------------
+
+(require 'flycheck)
 
 ;; Go
 ;; Requires: go get github.com/rogpeppe/godef
@@ -98,6 +100,18 @@
 		indent-tabs-mode nil))
 (add-hook 'js-mode-hook 'my-js-mode)
 
+;; Disable jshint
+;; http://codewinds.com/blog/2015-04-02-emacs-flycheck-eslint-jsx.html
+(setq-default flycheck-disabled-checkers
+	      (append flycheck-disabled-checkers
+		      '(javascript-jshint json-jsonlist)))
+
+;; Use eslint with web-mode
+(flycheck-add-mode 'javascript-eslint 'web-mode)
+
+;; React
+(add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
+
 ;; C/C++
 (defun my-c++-mode ()
   (auto-complete-mode 1)
@@ -112,6 +126,15 @@
 		indent-tabs-mode nil
 		css-tab-mode 'indent))
 (add-hook 'css-mode-hook 'my-css-mode)
+
+;; HTML
+(require 'web-mode)
+(defun my-web-mode ()
+  (setq web-mode-markup-indent-offset 2
+	web-mode-css-indent-offset 2
+	web-mode-code-indent-offset 2))
+(add-hook 'web-mode-hook 'my-web-mode)
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 
 ;; ---------------------- Features ---------------------------------------------
 
