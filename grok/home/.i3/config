@@ -9,3 +9,8 @@ exec nm-applet
 
 # ssh to vm
 bindsym $mod+Shift+Return exec i3-sensible-terminal -e 'ssh grokvm'
+
+# volume control
+bindsym XF86AudioMute exec amixer -c 1 -- sset Master toggle
+bindsym XF86AudioLowerVolume exec amixer -c 1 -- sset Master playback 5dB-
+bindsym XF86AudioRaiseVolume exec amixer -c 1 -- sset Master playback 5dB+
