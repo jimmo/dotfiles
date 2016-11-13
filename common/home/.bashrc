@@ -42,9 +42,13 @@ if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
   debian_chroot=$(cat /etc/debian_chroot)
 fi
 
+if [ -e "/usr/share/git/completion/git-prompt.sh" ]; then
+  . /usr/share/git/completion/git-prompt.sh
+fi
+
 # Enable color PS1 on xterm or if supported.
 if [ "$TERM" = "xterm" -o "$TERM" = "xterm-color" ] || [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-  PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]: \[\033[01;34m\]\w\[\033[00m\]\n\A \$ '
+  PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]: \[\033[01;34m\]\w\[\033[00m\]$(__git_ps1 " (%s)")\n\A \$ '
 
   # enable color support of ls and also add handy aliases
   if [ -x /usr/bin/dircolors ]; then
