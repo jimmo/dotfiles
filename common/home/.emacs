@@ -116,9 +116,12 @@
 ;; C/C++
 (defun my-c++-mode ()
   (auto-complete-mode 1)
+  (setq-default indent-tabs-mode nil
+                c-basic-offset 2)
   (c-set-offset 'innamespace [0])
   (c-set-offset 'inextern-lang 0))
 (add-hook 'c++-mode-hook 'my-c++-mode)
+(add-hook 'c-mode-hook 'my-c++-mode)
 
 ;; CSS
 (defun my-css-mode ()
