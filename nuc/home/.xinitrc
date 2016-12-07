@@ -6,4 +6,6 @@ ssh-add ~/.ssh/id_rsa
 
 xscreensaver &
 
+udiskie &
+
 exec i3
