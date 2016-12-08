@@ -46,7 +46,7 @@
 (defun my-install-packages ()
   (interactive)
   (defvar my-packages
-    '(go-mode flymake-go dot-mode whole-line-or-region auto-complete go-autocomplete arduino-mode flycheck less-css-mode smex ido-vertical-mode web-mode js2-mode json-mode))
+    '(go-mode flymake-go dot-mode whole-line-or-region auto-complete go-autocomplete arduino-mode flycheck less-css-mode smex ido-vertical-mode web-mode js2-mode json-mode markdown-mode neotree))
   (package-refresh-contents)
   (dolist (p my-packages)
     (when (not (package-installed-p p))
@@ -284,6 +284,10 @@
 	(revert-buffer t t t) )))
   (message "Refreshed open files.") )
 
+;; neotree
+(require 'neotree)
+(setq neo-smart-open t)
+
 ;; ---------------------- Key bindings -----------------------------------------
 
 ;; smex
@@ -404,3 +408,5 @@
 ;; Replace zap-to-char with zap-up-to-char.
 (autoload 'zap-up-to-char "misc" "" 'interactive)
 (global-set-key "\M-z" 'zap-up-to-char)
+
+(global-set-key "\C-xt" 'neotree-toggle)
