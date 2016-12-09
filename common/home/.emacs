@@ -221,6 +221,8 @@
     (load "/usr/share/clang/clang-format.el"))
 (if (file-readable-p "/usr/share/emacs/site-lisp/clang-format-3.6/clang-format.el")
     (load "/usr/share/emacs/site-lisp/clang-format-3.6/clang-format.el"))
+(if (file-readable-p "/usr/share/emacs/site-lisp/clang-format-3.8/clang-format.el")
+    (load "/usr/share/emacs/site-lisp/clang-format-3.8/clang-format.el"))
 (global-set-key [C-M-tab] 'clang-format-region)
 
 ;; Save position in files.
