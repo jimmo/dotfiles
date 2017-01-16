@@ -120,3 +120,5 @@ function unusbkey() {
   pwd | grep '/run/media/' && cd
   udisksctl unmount -b ${1:-/dev/sdb1}
 }
+
+alias xilinx='source /opt/Xilinx/14.7/ISE_DS/settings64.sh'
