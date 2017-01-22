@@ -46,7 +46,7 @@
 (defun my-install-packages ()
   (interactive)
   (defvar my-packages
-    '(go-mode flymake-go dot-mode whole-line-or-region auto-complete go-autocomplete arduino-mode flycheck less-css-mode smex ido-vertical-mode web-mode js2-mode json-mode markdown-mode neotree))
+    '(go-mode flymake-go dot-mode whole-line-or-region auto-complete go-autocomplete arduino-mode flycheck less-css-mode smex ido-vertical-mode web-mode js2-mode json-mode markdown-mode neotree magit undo-tree multiple-cursors ag wgrep wgrep-ag))
   (package-refresh-contents)
   (dolist (p my-packages)
     (when (not (package-installed-p p))
@@ -289,6 +289,21 @@
 ;; neotree
 (require 'neotree)
 (setq neo-smart-open t)
+
+;; winner-mode (undo/redo of window layouts)
+(when (fboundp 'winner-mode)
+  (winner-mode 1))
+
+(require 'undo-tree)
+(global-undo-tree-mode)
+
+(require 'multiple-cursors)
+
+(require 'wgrep)
+(require 'wgrep-ag)
+
+(require 'magit)
+(global-set-key (kbd "C-x g") 'magit-status)
 
 ;; ---------------------- Key bindings -----------------------------------------
 
