@@ -18,6 +18,9 @@ bindsym $mod+o exec i3-sensible-terminal -x octave-cli
 bindsym $mod+F11 exec xterm -e i3-octave
 bindsym $mod+F12 exec xterm -e i3-python
 
+# screenshot
+bindsym $mod+Shift+s exec xfce4-screenshooter
+
 # get i3 commands
 bindsym $mod+c exec i3-input
 

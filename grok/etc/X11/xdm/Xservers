@@ -1,0 +1,1 @@
+:0 local /usr/bin/Xorg -ardelay 200 -arinterval 17 :0
