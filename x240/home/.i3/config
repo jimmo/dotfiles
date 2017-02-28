@@ -13,3 +13,7 @@ exec syndaemon -i 1.5 -t -k -d
 # volume control
 bindsym XF86AudioLowerVolume exec amixer -c 1 -- sset Master playback 5dB-
 bindsym XF86AudioRaiseVolume exec amixer -c 1 -- sset Master playback 5dB+
+
+# brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 5
+bindsym XF86MonBrightnessUp exec xbacklight -inc 5
