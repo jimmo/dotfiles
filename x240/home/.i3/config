@@ -1,5 +1,5 @@
 # start chrome
-bindsym $mod+g exec chromium --force-device-scale-factor=1.25
+bindsym $mod+g exec google-chrome-stable --force-device-scale-factor=1.25
 
 # screen lock
 bindsym $mod+l exec xscreensaver-command -lock
