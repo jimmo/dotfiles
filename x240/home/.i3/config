@@ -17,3 +17,6 @@ bindsym XF86AudioRaiseVolume exec amixer -c 1 -- sset Master playback 5dB+
 # brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 5
 bindsym XF86MonBrightnessUp exec xbacklight -inc 5
+
+# ssh to vm
+bindsym $mod+Shift+Return exec i3-sensible-terminal -e 'ssh grokvm'
