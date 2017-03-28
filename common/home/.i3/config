@@ -21,6 +21,9 @@ bindsym $mod+F12 exec xterm -e i3-python
 # screenshot
 bindsym $mod+Shift+s exec xfce4-screenshooter
 
+# zoom
+bindsym $mod+Shift+m exec xmag -source 256x144
+
 # get i3 commands
 bindsym $mod+c exec i3-input
 

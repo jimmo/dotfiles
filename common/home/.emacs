@@ -325,6 +325,9 @@
 (global-set-key (kbd "C-M-y") 'kill-whole-line)
 (global-set-key (kbd "C-|") 'kill-whole-line)
 
+;; Enable windmove (built-in)
+(windmove-default-keybindings)
+
 ;; C-w kills symbol but will kill-region if there is one.
 (defun kill-symbol-at-point ()
   (interactive)
