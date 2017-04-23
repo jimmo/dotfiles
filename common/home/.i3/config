@@ -59,6 +59,10 @@ bindsym $mod+Ctrl+Left exec xrandr --output LVDS1 --auto --rotate left
 bindsym $mod+Ctrl+Right exec xrandr --output LVDS1 --auto --rotate right
 bindsym $mod+Ctrl+Down exec xrandr --output LVDS1 --auto --rotate inverted
 
+# gnuradio-companion
+for_window [title="Top Block"] floating enable
+for_window [title="Top Block"] resize set 1000 800
+
 # split in horizontal orientation
 bindsym $mod+h split h
 
