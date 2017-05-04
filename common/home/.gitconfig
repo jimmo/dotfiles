@@ -2,6 +2,9 @@
 	name = Jim Mussared
 	email = jim.mussared@gmail.com
 
+[core]
+	editor = emacs -nw
+
 [credential]
 	helper = store
 
