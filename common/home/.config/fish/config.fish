@@ -1,1 +1,1 @@
-set -Ux EDITOR 'emacs -nw'
+set -x EDITOR 'emacs -nw'
