@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if test ${#*} -eq 1; then
+  emacsclient $1 || (emacs --daemon; emacsclient $1)
+else
+  emacsclient -n -s $1 $2 || ~/bin/es $1 $2
+fi

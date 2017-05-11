@@ -1,0 +1,2 @@
+#!/bin/bash
+emacs --eval '(list (setq server-name "'$1'") (server-start))' $2 &
