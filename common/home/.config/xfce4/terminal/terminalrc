@@ -1,5 +1,4 @@
 [Configuration]
-FontName=Noto Mono 12
 MiscAlwaysShowTabs=FALSE
 MiscBell=FALSE
 MiscBordersDefault=TRUE
@@ -31,4 +30,3 @@ MiscUseShiftArrowsToScroll=FALSE
 MiscSlimTabs=FALSE
 ShortcutsNoMenukey=TRUE
 ShortcutsNoHelpkey=TRUE
-
