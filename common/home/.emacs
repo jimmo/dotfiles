@@ -24,12 +24,6 @@
      ("\\.tex\\'" flymake-simple-tex-init nil nil)
      ("\\.idl\\'" flymake-simple-make-init nil nil)
      ("\\.ino\\'" flymake-simple-make-init nil nil)))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
 
 ;; Common Lisp.
 (require 'cl-lib)
