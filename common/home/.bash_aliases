@@ -121,4 +121,9 @@ function unusbkey() {
   udisksctl unmount -b ${1:-/dev/sdb1}
 }
 
+function enter-venv() {
+  test -d venv || python3 -m venv venv
+  source venv/bin/activate
+}
+
 alias xilinx='source /opt/Xilinx/14.7/ISE_DS/settings64.sh'
