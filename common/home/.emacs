@@ -424,3 +424,6 @@
 (global-set-key "\M-z" 'zap-up-to-char)
 
 (global-set-key "\C-xt" 'neotree-toggle)
+
+(global-set-key "\C-xx" 'copy-to-register)
+(global-set-key "\C-xy" 'insert-from-register)
