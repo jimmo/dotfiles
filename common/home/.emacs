@@ -134,6 +134,11 @@
 (add-hook 'web-mode-hook 'my-web-mode)
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 
+;; RiotJS
+(add-to-list 'auto-mode-alist '("\\.tag\\'" . web-mode))
+(setq web-mode-engines-alist
+  '(("riot" . "\\.tag\\'")))
+
 ;; ---------------------- Features ---------------------------------------------
 
 ;; ido
