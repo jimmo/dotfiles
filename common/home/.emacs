@@ -430,6 +430,6 @@
 
 (global-set-key "\C-xt" 'neotree-toggle)
 
-;; Named copy/insert.
+;; Shortcuts for registers.
 (global-set-key "\C-xw" 'copy-to-register)
-(global-set-key "\C-xy" 'insert-from-register)
+(global-set-key "\C-xy" 'insert-register)
