@@ -300,6 +300,7 @@
 
 (require 'wgrep)
 (require 'wgrep-ag)
+(global-set-key (kbd "M-s") 'ag-project)
 
 (require 'magit)
 (global-set-key (kbd "C-x g") 'magit-status)
