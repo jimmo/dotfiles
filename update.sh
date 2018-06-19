@@ -47,6 +47,11 @@ done | sort | uniq | grep -v '[.]prepend$' | while read file; do
 	[ -e $part/$base/$file ] && cat $part/$base/$file >> /tmp/dotfile
     done
 
+    # Append any '.append' files.
+    for part in common $*; do
+	[ -e $part/$base/$file.append ] && cat $part/$base/$file.append >> /tmp/dotfile
+    done
+
     if diff /tmp/dotfile $dest/$file > /dev/null; then
       echo "$dest/$file [skip]"
     else
