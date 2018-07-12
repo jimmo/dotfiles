@@ -23,4 +23,4 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 5
 bindsym XF86MonBrightnessUp exec xbacklight -inc 5
 
 # ssh to vm
-bindsym $mod+Shift+Return exec i3-sensible-terminal -e 'ssh grokvm'
+bindsym $mod+Shift+Return exec i3-sensible-terminal -e 'ssh -p 3022 ubuntu@jimmo-grok'
