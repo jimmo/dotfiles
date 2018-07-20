@@ -1,6 +1,6 @@
 # start chrome
-bindsym $mod+g exec chromium
-for_window [class="Chromium"] border pixel 1
+bindsym $mod+g exec google-chrome-stable
+for_window [class="Google-chrome"] border pixel 1
 
 # screen lock
 bindsym $mod+l exec xscreensaver-command -lock
