@@ -40,11 +40,12 @@
 (defun my-install-packages ()
   (interactive)
   (defvar my-packages
-    '(go-mode flymake-go dot-mode whole-line-or-region auto-complete go-autocomplete arduino-mode flycheck less-css-mode smex ido-vertical-mode web-mode js2-mode json-mode markdown-mode neotree magit undo-tree multiple-cursors ag wgrep wgrep-ag fish-mode))
+    '(go-mode flymake-go dot-mode whole-line-or-region auto-complete go-autocomplete arduino-mode flycheck less-css-mode smex ido-vertical-mode web-mode js2-mode json-mode markdown-mode neotree magit undo-tree multiple-cursors ag wgrep wgrep-ag fish-mode company company-shell))
   (package-refresh-contents)
   (dolist (p my-packages)
     (when (not (package-installed-p p))
       (package-install p))))
+
 
 ;; ---------------------- Language modes ---------------------------------------
 
@@ -138,6 +139,25 @@
 (add-to-list 'auto-mode-alist '("\\.tag\\'" . web-mode))
 (setq web-mode-engines-alist
   '(("riot" . "\\.tag\\'")))
+
+;; Typescript
+(require 'tide)
+(require 'company)
+(defun my-tide-mode ()
+  (interactive)
+  (tide-setup)
+  (flycheck-mode +1)
+  (setq flycheck-check-syntax-automatically '(save mode-enabled))
+  (eldoc-mode +1)
+  (tide-hl-identifier-mode +1)
+  (company-mode +1)
+  (setq tide-format-options '(:indentSize 2 :tabSize 2))
+  (setq typescript-indent-level
+	(or (plist-get (tide-tsfmt-options) ':indentSize) 2)))
+
+(setq company-tooltip-align-annotations t)
+(add-hook 'before-save-hook 'tide-format-before-save)
+(add-hook 'typescript-mode-hook #'my-tide-mode)
 
 ;; ---------------------- Features ---------------------------------------------
 
