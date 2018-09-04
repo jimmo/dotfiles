@@ -1,4 +1,5 @@
 # Redshift
+exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 exec redshift-gtk
 
 # start chrome
