@@ -40,7 +40,7 @@
 (defun my-install-packages ()
   (interactive)
   (defvar my-packages
-    '(go-mode flymake-go dot-mode whole-line-or-region auto-complete go-autocomplete arduino-mode flycheck less-css-mode smex ido-vertical-mode web-mode js2-mode json-mode markdown-mode neotree magit undo-tree multiple-cursors ag wgrep wgrep-ag fish-mode company company-shell))
+    '(go-mode flymake-go dot-mode whole-line-or-region auto-complete go-autocomplete arduino-mode flycheck less-css-mode smex ido-vertical-mode web-mode js2-mode json-mode markdown-mode neotree magit undo-tree multiple-cursors ag wgrep wgrep-ag fish-mode company company-shell tide))
   (package-refresh-contents)
   (dolist (p my-packages)
     (when (not (package-installed-p p))
