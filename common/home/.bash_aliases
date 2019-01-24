@@ -122,8 +122,13 @@ function unusbkey() {
 }
 
 function enter-venv() {
-  test -d venv || python3 -m venv venv
-  source venv/bin/activate
+  if [ -d venv ]; then
+    source venv/bin/activate
+  else
+    python3 -m venv venv
+    source venv/bin/activate
+    pip install --upgrade pip
+  fi
 }
 
 alias xilinx='source /opt/Xilinx/14.7/ISE_DS/settings64.sh'

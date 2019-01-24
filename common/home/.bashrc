@@ -89,6 +89,10 @@ if [ -d /usr/local/google/android-studio ]; then
   PATH=$PATH:/usr/local/google/android-studio/bin:/usr/local/google/android-studio/sdk/platform-tools:/usr/local/google/android-studio/sdk/tools
 fi
 
+if [ -d $HOME/.gem/ruby/2.6.0/bin ]; then
+  PATH=$PATH:$HOME/.gem/ruby/2.6.0/bin
+fi
+
 if [ -d $HOME/bin ]; then
   PATH=$PATH:$HOME/bin
 fi
