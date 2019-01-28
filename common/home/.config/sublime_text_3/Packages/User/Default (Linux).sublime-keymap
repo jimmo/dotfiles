@@ -1,0 +1,21 @@
+[
+	{ "keys": ["ctrl+shift+w"], "command": "close" },
+	{ "keys": ["ctrl+w"], "command": "run_macro_file", "args": {"file": "res://Packages/User/Delete whole word.sublime-macro"} },
+
+	{ "keys": ["ctrl+k", "a"], "command": "select_all" },
+	{ "keys": ["ctrl+k", "f"], "command": "slurp_find_string" },
+	{ "keys": ["ctrl+k", "ctrl+f"], "command": "find_under" },
+	{ "keys": ["ctrl+f"], "command": "find_next", "context":
+		[{"key": "panel", "operand": "incremental_find"}, {"key": "panel_has_focus"}]
+	},
+
+	{ "keys": ["ctrl+a"], "command": "move_to", "args": {"to": "bol", "extend": false} },
+	{ "keys": ["ctrl+e"], "command": "move_to", "args": {"to": "eol", "extend": false} },
+
+	{ "keys": ["ctrl+g", "g"], "command": "show_overlay", "args": {"overlay": "goto", "text": ":"} },
+	{ "keys": ["ctrl+g", "d"], "command": "goto_definition" },
+	{ "keys": ["ctrl+g", "r"], "command": "goto_reference" },
+	{ "keys": ["ctrl+g", "s"], "command": "reveal_in_side_bar" },
+
+	{ "keys": ["ctrl+."], "command": "repeat_since_movement" },
+]

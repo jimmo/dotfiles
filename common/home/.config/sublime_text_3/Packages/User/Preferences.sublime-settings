@@ -1,0 +1,21 @@
+{
+	"auto_complete_commit_on_tab": true,
+	"auto_find_in_selection": true,
+	"color_scheme": "Jim.sublime-color-scheme",
+	"ensure_newline_at_eof_on_save": true,
+	"font_face": "Noto Sans Mono",
+	"font_size": 12,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"indent_guide_options":
+	[
+		"draw_normal",
+		"draw_active"
+	],
+	"shift_tab_unindent": true,
+	"translate_tabs_to_spaces": true,
+	"trim_trailing_white_space_on_save": true,
+	"show_minimap": false,
+}

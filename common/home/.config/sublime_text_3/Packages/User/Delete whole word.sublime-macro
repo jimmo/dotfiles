@@ -1,0 +1,4 @@
+[
+	{"command": "move", "args": {"by": "words", "forward": false} },
+	{"command": "delete_word", "args": { "forward": "true" }},
+]
