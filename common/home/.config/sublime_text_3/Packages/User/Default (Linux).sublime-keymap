@@ -1,21 +1,60 @@
 [
-	{ "keys": ["ctrl+shift+w"], "command": "close" },
+	// Delete whole word.
 	{ "keys": ["ctrl+w"], "command": "run_macro_file", "args": {"file": "res://Packages/User/Delete whole word.sublime-macro"} },
+	// Delete rest of line.
+	{ "keys": ["ctrl+k", "k"], "command": "run_macro_file", "args": {"file": "res://Packages/Default/Delete to Hard EOL.sublime-macro"} },
+	// Delete whole line.
+	{ "keys": ["ctrl+k", "ctrl+k"], "command": "run_macro_file", "args": {"file": "res://Packages/Default/Delete Line.sublime-macro"} },
+	// Duplicate line.
+	{ "keys": ["ctrl+k", "d"], "command": "duplicate_line" },
+	// Replace close-tab shortcut now used by delete-whole-word.
+	{ "keys": ["ctrl+shift+w"], "command": "close" },
+	// Simpler "yank".
+	{ "keys": ["ctrl+k", "y"], "command": "yank" },
 
-	{ "keys": ["ctrl+k", "a"], "command": "select_all" },
-	{ "keys": ["ctrl+k", "f"], "command": "slurp_find_string" },
-	{ "keys": ["ctrl+k", "ctrl+f"], "command": "find_under" },
-	{ "keys": ["ctrl+f"], "command": "find_next", "context":
-		[{"key": "panel", "operand": "incremental_find"}, {"key": "panel_has_focus"}]
-	},
+	// Always use incremental find.
+	{ "keys": ["ctrl+f"], "command": "show_panel", "args": {"panel": "incremental_find", "reverse": false} },
+	// Easier shortcut for find_prev during incremental find.
+	{ "keys": ["ctrl+r"], "command": "find_prev", "context": [
+		{"key": "panel", "operand": "incremental_find"},
+		{"key": "panel_has_focus"}
+	] },
+	// Shortcut for regular find.
+	{ "keys": ["ctrl+k", "f"], "command": "show_panel", "args": {"panel": "find", "reverse": false} },
 
+	// Easier shortcut for find_under (like '*' in Vim).
+	{ "keys": ["ctrl+i"], "command": "find_under" },             // Was ctrl+f3
+	{ "keys": ["ctrl+shift+i"], "command": "find_under_prev" },  // Was ctrl+shift+f3
+	{ "keys": ["ctrl+k", "i"], "command": "find_all_under" },    // Was alt+f3
+
+	// Emacs must-haves.
+	{ "keys": ["ctrl+d"], "command": "right_delete" },
 	{ "keys": ["ctrl+a"], "command": "move_to", "args": {"to": "bol", "extend": false} },
 	{ "keys": ["ctrl+e"], "command": "move_to", "args": {"to": "eol", "extend": false} },
+	{ "keys": ["tab"], "command": "reindent", "context":
+		[
+			{ "key": "setting.auto_indent", "operator": "equal", "operand": true },
+			{ "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
+			{ "key": "preceding_text", "operator": "not_regex_match", "operand": "^[\\s]*$", "match_all": true },
+		]
+	},
 
+	// Replacements for commands used by above.
+	{ "keys": ["ctrl+k", "a"], "command": "select_all" },        // Was ctrl+a
+	{ "keys": ["ctrl+k", "e"], "command": "slurp_find_string" }, // Was ctrl+e
+
+	// Simpler goto chords.
 	{ "keys": ["ctrl+g", "g"], "command": "show_overlay", "args": {"overlay": "goto", "text": ":"} },
+	{ "keys": ["ctrl+g", "s"], "command": "reveal_in_side_bar" },
 	{ "keys": ["ctrl+g", "d"], "command": "goto_definition" },
 	{ "keys": ["ctrl+g", "r"], "command": "goto_reference" },
-	{ "keys": ["ctrl+g", "s"], "command": "reveal_in_side_bar" },
 
+	// Vim must-haves.
 	{ "keys": ["ctrl+."], "command": "repeat_since_movement" },
+
+	// Broken key combos.
+	{ "keys": ["ctrl+alt+up"], "command": "swap_line_up" },
+	{ "keys": ["ctrl+alt+down"], "command": "swap_line_down" },
+
+	//
 ]
