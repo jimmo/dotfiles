@@ -3,7 +3,7 @@
 	email = jim.mussared@gmail.com
 
 [core]
-	editor = emacs -nw
+	editor = subl3 -n -w
 
 [credential]
 	helper = store
