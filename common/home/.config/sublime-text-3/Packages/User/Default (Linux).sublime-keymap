@@ -59,6 +59,10 @@
 	// Broken key combos.
 	{ "keys": ["ctrl+alt+up"], "command": "swap_line_up" },
 	{ "keys": ["ctrl+alt+down"], "command": "swap_line_down" },
-]
 
-// hello
+	// Invert tab behavior.
+	{ "keys": ["ctrl+pagedown"], "command": "next_view_in_stack" },
+	{ "keys": ["ctrl+pageup"], "command": "prev_view_in_stack" },
+    { "keys": ["ctrl+tab"], "command": "next_view" },
+	{ "keys": ["ctrl+shift+tab"], "command": "prev_view" },
+]
