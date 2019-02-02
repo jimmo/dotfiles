@@ -14,10 +14,11 @@
 		"draw_normal",
 		"draw_active"
 	],
-	"shift_tab_unindent": true,
-	"translate_tabs_to_spaces": true,
 	"indent_to_bracket": true,
-	"trim_trailing_white_space_on_save": true,
+	"shift_tab_unindent": true,
 	"show_minimap": false,
 	"spell_check": true,
+	"translate_tabs_to_spaces": true,
+	"trim_trailing_white_space_on_save": true,
+    "close_windows_when_empty": false,
 }

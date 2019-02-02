@@ -63,6 +63,7 @@ done | sort | uniq | grep -v '[.]prepend$' | while read file; do
         echo "$dest/$file [skip]"
     else
         if [ $DIFF_ONLY -eq 1 ]; then
+            echo "$dest/$file [diff]"
             diff "/tmp/dotfile" "$dest/$file"
         else
             echo "$dest/$file [update]"

@@ -31,8 +31,12 @@
 	{ "keys": ["ctrl+d"], "command": "right_delete" },
 	{ "keys": ["ctrl+a"], "command": "move_to", "args": {"to": "bol", "extend": false} },
 	{ "keys": ["ctrl+e"], "command": "move_to", "args": {"to": "eol", "extend": false} },
+	// Make tab re-indent line when the cursor isn't at the start of the line.
 	{ "keys": ["tab"], "command": "reindent", "context":
 		[
+			{ "key": "auto_complete_visible", "operand": false },
+			{ "key": "popup_visible", "operand": false },
+			{ "key": "panel_visible", "operand": false },
 			{ "key": "setting.auto_indent", "operator": "equal", "operand": true },
 			{ "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
 			{ "key": "preceding_text", "operator": "not_regex_match", "operand": "^[\\s]*$", "match_all": true },
@@ -55,6 +59,6 @@
 	// Broken key combos.
 	{ "keys": ["ctrl+alt+up"], "command": "swap_line_up" },
 	{ "keys": ["ctrl+alt+down"], "command": "swap_line_down" },
-
-	//
 ]
+
+// hello
