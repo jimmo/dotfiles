@@ -1,6 +1,7 @@
 {
 	"auto_complete_commit_on_tab": true,
 	"auto_find_in_selection": true,
+	"close_windows_when_empty": true,
 	"color_scheme": "Jim.sublime-color-scheme",
 	"ensure_newline_at_eof_on_save": true,
 	"font_face": "Noto Sans Mono",
@@ -18,7 +19,7 @@
 	"shift_tab_unindent": true,
 	"show_minimap": false,
 	"spell_check": true,
+	"theme": "Default.sublime-theme",
 	"translate_tabs_to_spaces": true,
-	"trim_trailing_white_space_on_save": true,
-    "close_windows_when_empty": false,
+	"trim_trailing_white_space_on_save": true
 }

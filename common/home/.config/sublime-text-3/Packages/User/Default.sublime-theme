@@ -1,0 +1,36 @@
+[
+    {
+        "class": "sidebar_heading",
+        "font.size": 15,
+    },
+    {
+        "class": "sidebar_label",
+        "font.size": 14
+    },
+    {
+        "class": "quick_panel_label",
+        "parents": [{"class": "mini_quick_panel_row"}],
+        "font.size": 14
+    },
+    {
+        "class": "label_control",
+        "font.size": 14
+    },
+    {
+        "class": "title_label_control",
+        "font.size": 24
+    },
+    {
+        "class": "tool_tip_label_control",
+        "font.size": 14,
+    },
+    {
+        "class": "label_control",
+        "parents": [{"class": "status_bar"}],
+        "font.size": 14,
+    },
+    {
+        "class": "tab_label",
+        "font.size": 14,
+    },
+]

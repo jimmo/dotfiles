@@ -3,7 +3,7 @@
     "author": "Jim Mussared",
     "variables":
     {
-        "red": "hsl(0, 60%, 60%)",
+        "red": "hsl(0, 100%, 40%)",
         "purple": "hsl(261, 100%, 75%)",
         "orange": "hsl(32, 98%, 56%)",
         "green": "hsl(90, 60%, 50%)",
