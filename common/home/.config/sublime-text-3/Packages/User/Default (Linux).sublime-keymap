@@ -53,6 +53,8 @@
 	{ "keys": ["ctrl+g", "d"], "command": "goto_definition" },
 	{ "keys": ["ctrl+g", "r"], "command": "goto_reference" },
 	{ "keys": ["ctrl+g", "b"], "command": "jump_back" },
+	{ "keys": ["ctrl+g", "n"], "command": "next_modification" },
+	{ "keys": ["ctrl+g", "p"], "command": "prev_modification" },
 
 	// Vim must-haves.
 	{ "keys": ["ctrl+."], "command": "repeat_since_movement" },

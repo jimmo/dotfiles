@@ -1,0 +1,29 @@
+#!/bin/bash
+
+#set -x
+set -e
+
+if [ -z $1 ]; then
+    NAME=${PWD##*/}
+else
+    NAME=$1
+fi
+
+PROJ=~/src/sublime-projects/${NAME}.sublime-project
+
+if [ ! -e $PROJ ]; then
+    echo "Creating new project: ${NAME} --> $(pwd)"
+    cat > $PROJ <<EOF
+{
+"folders":
+[
+    {
+        "path": "$(pwd)"
+    }
+]
+}
+EOF
+fi
+
+s -p $PROJ
+
