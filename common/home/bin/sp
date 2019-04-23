@@ -4,7 +4,12 @@
 set -e
 
 if [ -z $1 ]; then
+    # Fallback to just using the parent directory name only (to match old behaviour)
     NAME=${PWD##*/}
+    if [ ! -e "${HOME}/src/sublime-projects/${NAME}.sublime-project" ]; then
+        # But if that doesn't exist, use grantparent/parent for new ones.
+        NAME=`pwd | egrep -o '[^/]*/[^/]*$' | tr / _`
+    fi
 else
     NAME=$1
 fi
