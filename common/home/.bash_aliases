@@ -97,10 +97,13 @@ alias microscope='vlc v4l:// :v4l-vdev="/dev/video0"'
 function github() {
   # TODO - convert http->ssh, and non-github.
   echo $1 | grep -E 'git@github.com:[a-zA-Z0-9_-]+/[a-zA-Z0-9_-]+.git' || return
-  url=$(echo $1 | cut -d':' -f2 |  cut -d'/' -f1)
-  mkdir ~/src/github.com/$url
-  cd ~/src/github.com/$url
-  git clone $1
+  org=$(echo $1 | cut -d':' -f2 |  cut -d'/' -f1)
+  proj=$(echo $1 | cut -d':' -f2 |  cut -d'/' -f2)
+  proj=${proj%.git}
+  mkdir -p ~/src/github.com/$org
+  cd ~/src/github.com/$org
+  echo git clone $1
+  cd $proj
 }
 
 function microbit() {

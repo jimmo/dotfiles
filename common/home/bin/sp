@@ -14,7 +14,7 @@ else
     NAME=$1
 fi
 
-PROJ=~/src/sublime-projects/${NAME}.sublime-project
+PROJ="${HOME}/src/sublime-projects/${NAME}.sublime-project"
 
 if [ ! -e $PROJ ]; then
     echo "Creating new project: ${NAME} --> $(pwd)"
