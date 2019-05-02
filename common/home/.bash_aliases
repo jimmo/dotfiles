@@ -102,7 +102,7 @@ function github() {
   proj=${proj%.git}
   mkdir -p ~/src/github.com/$org
   cd ~/src/github.com/$org
-  echo git clone $1
+  git clone $1
   cd $proj
 }
 
@@ -135,3 +135,6 @@ function enter-venv() {
 }
 
 alias xilinx='source /opt/Xilinx/14.7/ISE_DS/settings64.sh'
+
+alias pdf=google-chrome-stable
+alias chrome=google-chrome-stable
