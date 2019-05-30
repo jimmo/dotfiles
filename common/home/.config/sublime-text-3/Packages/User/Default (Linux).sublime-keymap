@@ -14,12 +14,21 @@
 
 	// Always use incremental find.
 	{ "keys": ["ctrl+f"], "command": "show_panel", "args": {"panel": "incremental_find", "reverse": false} },
-	// Easier shortcut for find_prev during incremental find.
-	{ "keys": ["ctrl+r"], "command": "find_prev", "context": [
-		{"key": "panel", "operand": "incremental_find"},
-		{"key": "panel_has_focus"}
+	// Make ctrl+g / ctrl+shift+g also incremental find next/prev. (To match e.g. Chrome)
+	{ "keys": ["ctrl+g"], "command": "find_next", "context": [
+		{ "key": "panel", "operand": "incremental_find"},
+		{ "key": "panel_visible" }
 	] },
-	// Shortcut for regular find.
+	{ "keys": ["ctrl+shift+g"], "command": "find_prev", "context": [
+		{ "key": "panel", "operand": "incremental_find"},
+		{ "key": "panel_visible" }
+	] },
+	// Also add ctrl+r for find_prev (easier to type).
+	{ "keys": ["ctrl+r"], "command": "find_prev", "context": [
+		{ "key": "panel", "operand": "incremental_find"},
+		{ "key": "panel_visible"}
+	] },
+	// Shortcut for regular find (just in case... I don't really understand why regular find exists?).
 	{ "keys": ["ctrl+k", "f"], "command": "show_panel", "args": {"panel": "find", "reverse": false} },
 
 	// Easier shortcut for find_under (like '*' in Vim).
@@ -47,19 +56,48 @@
 	{ "keys": ["ctrl+k", "a"], "command": "select_all" },        // Was ctrl+a
 	{ "keys": ["ctrl+k", "e"], "command": "slurp_find_string" }, // Was ctrl+e
 
-	// Simpler goto chords.
-	{ "keys": ["ctrl+g", "g"], "command": "show_overlay", "args": {"overlay": "goto", "text": ":"} },
-	{ "keys": ["ctrl+g", "s"], "command": "reveal_in_side_bar" },
-	{ "keys": ["ctrl+g", "d"], "command": "goto_definition" },
-	{ "keys": ["ctrl+g", "r"], "command": "goto_reference" },
-	{ "keys": ["ctrl+g", "b"], "command": "jump_back" },
-	{ "keys": ["ctrl+g", "n"], "command": "next_modification" },
-	{ "keys": ["ctrl+g", "p"], "command": "prev_modification" },
+	// Simpler goto chords. (Only enabled when panel (e.g. find) isn't visible, otherwise find_next will wait for the second part of the chord to not match)
+	// Goto line. (Which is what ctrl+g on its own is by default)
+	{ "keys": ["ctrl+g", "g"], "command": "show_overlay", "args": {"overlay": "goto", "text": ":"}, "context": [
+		{ "key": "panel_visible", "operand": false }
+	] },
+	{ "keys": ["ctrl+g", "l"], "command": "show_overlay", "args": {"overlay": "goto", "text": ":"}, "context": [
+		{ "key": "panel_visible", "operand": false }
+	] },
+	// Show current file in sidebar.
+	{ "keys": ["ctrl+g", "s"], "command": "reveal_in_side_bar", "context": [
+		{ "key": "panel_visible", "operand": false }
+	] },
+	// Goto definition.
+	{ "keys": ["ctrl+g", "d"], "command": "goto_definition", "context": [
+		{ "key": "panel_visible", "operand": false }
+	] },
+	// Goto reference(s).
+	{ "keys": ["ctrl+g", "r"], "command": "goto_reference", "context": [
+		{ "key": "panel_visible", "operand": false }
+	] },
+	// Jump back.
+	{ "keys": ["ctrl+g", "b"], "command": "jump_back", "context": [
+		{ "key": "panel_visible", "operand": false }
+	] },
+	// Git next/prev modification.
+	{ "keys": ["ctrl+g", "n"], "command": "next_modification", "context": [
+		{ "key": "panel_visible", "operand": false }
+	] },
+	{ "keys": ["ctrl+g", "p"], "command": "prev_modification", "context": [
+		{ "key": "panel_visible", "operand": false }
+	] },
 
-	// Vim must-haves.
+	// Vim must-haves. (Dot mode)
 	{ "keys": ["ctrl+."], "command": "repeat_since_movement" },
 
 	// Broken key combos.
 	{ "keys": ["ctrl+alt+up"], "command": "swap_line_up" },
 	{ "keys": ["ctrl+alt+down"], "command": "swap_line_down" },
+
+	{ "keys": ["escape"], "command": "single_selection", "context":
+		[
+			{ "key": "num_selections", "operator": "not_equal", "operand": 1 }
+		]
+	},
 ]
