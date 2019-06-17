@@ -5,6 +5,7 @@ DIFF_ONLY=0
 if [ "$1" = "-d" ]; then
     DIFF_ONLY=1
     echo "Diff only..."
+    shift
 fi
 
 # Get all the files that we're going to write.
@@ -60,13 +61,20 @@ done | sort | uniq | grep -v '[.]prepend$' | while read file; do
     done
 
     if diff "/tmp/dotfile" "$dest/$file" > /dev/null; then
-        echo "$dest/$file [skip]"
+        #if [ $DIFF_ONLY -eq 0 ]; then
+            echo -e "$dest/$file \033[01;92m[skip]\033[0m"
+        #fi
     else
         if [ $DIFF_ONLY -eq 1 ]; then
-            echo "$dest/$file [diff]"
+            echo -e "$dest/$file \033[01;91m[diff]\033[0m"
             diff "/tmp/dotfile" "$dest/$file"
+            echo
+            for part in common $*; do
+                [ -e "$part/$base/$file" ] && echo "  cp \"$dest/$file\" \"$part/$base/$file\""
+            done
+            echo
         else
-            echo "$dest/$file [update]"
+            echo -e "$dest/$file \033[01;91m[update]\033[0m"
             $prefix mkdir -p `dirname $dest/$file`
             $prefix bash -c "cat /tmp/dotfile > '$dest/$file'"
         fi

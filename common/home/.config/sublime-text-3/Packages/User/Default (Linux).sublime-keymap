@@ -8,12 +8,12 @@
 	// Duplicate line.
 	{ "keys": ["ctrl+k", "d"], "command": "duplicate_line" },
 	// Replace close-tab shortcut now used by delete-whole-word.
-	{ "keys": ["ctrl+shift+w"], "command": "close" },
+	{ "keys": ["ctrl+k", "w"], "command": "close" },
 	// Simpler "yank".
 	{ "keys": ["ctrl+k", "y"], "command": "yank" },
 
 	// Always use incremental find.
-	{ "keys": ["ctrl+f"], "command": "show_panel", "args": {"panel": "incremental_find", "reverse": false} },
+	{ "keys": ["ctrl+f"], "command": "show_panel", "args": {"panel": "incremental_find", "reverse": false } },
 	// Make ctrl+g / ctrl+shift+g also incremental find next/prev. (To match e.g. Chrome)
 	{ "keys": ["ctrl+g"], "command": "find_next", "context": [
 		{ "key": "panel", "operand": "incremental_find"},
@@ -95,9 +95,26 @@
 	{ "keys": ["ctrl+alt+up"], "command": "swap_line_up" },
 	{ "keys": ["ctrl+alt+down"], "command": "swap_line_down" },
 
+	// Esc to clear selection.
 	{ "keys": ["escape"], "command": "single_selection", "context":
 		[
 			{ "key": "num_selections", "operator": "not_equal", "operand": 1 }
 		]
 	},
+
+	// Select text between brackets (using BracketHighlighter plugin).
+    {
+        "no_outside_adj": null,
+        "keys": ["ctrl+'"],
+        "command": "bh_key",
+        "args":
+        {
+            "lines" : true,
+            "plugin":
+            {
+                "type": ["__all__"],
+                "command": "bh_modules.bracketselect"
+            }
+        }
+    }
 ]

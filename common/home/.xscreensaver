@@ -1,9 +1,9 @@
 # XScreenSaver Preferences File
-# Written by xscreensaver-demo 5.36 for jimmo on Sun Oct 23 15:58:19 2016.
+# Written by xscreensaver-demo 5.42 for jimmo on Tue Jun  4 14:18:14 2019.
 # https://www.jwz.org/xscreensaver/
 
-timeout:	0:02:00
-cycle:		0:10:00
+timeout:	0:20:00
+cycle:		0:05:00
 lock:		False
 lockTimeout:	0:00:00
 passwdTimeout:	0:00:30
@@ -272,6 +272,16 @@ programs:								      \
   GL: 				raverhoop -root				    \n\
   GL: 				splodesic -root				    \n\
   GL: 				unicrud -root				    \n\
+  GL: 				esper -root				    \n\
+  GL: 				vigilance -root				    \n\
+  GL: 				crumbler -root				    \n\
+				filmleader -root			    \n\
+				glitchpeg -root				    \n\
+  GL: 				handsy -root				    \n\
+  GL: 				maze3d -root				    \n\
+  GL: 				peepers -root				    \n\
+  GL: 				razzledazzle -root			    \n\
+				vfeedback -root				    \n\
 
 
 pointerPollTime:    0:00:05

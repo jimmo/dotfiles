@@ -44,5 +44,7 @@
 	"spell_check": true,
 	"theme": "Default.sublime-theme",
 	"translate_tabs_to_spaces": true,
-	"trim_trailing_white_space_on_save": true
+	"trim_trailing_white_space_on_save": true,
+	"match_brackets": false,
+	"match_tags": false,
 }
