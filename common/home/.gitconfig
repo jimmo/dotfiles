@@ -27,5 +27,6 @@
 
 [diff]
 	submodule = log
+
 [pull]
 	rebase = true

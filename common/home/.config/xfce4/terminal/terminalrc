@@ -30,3 +30,7 @@ MiscUseShiftArrowsToScroll=FALSE
 MiscSlimTabs=FALSE
 ShortcutsNoMenukey=TRUE
 ShortcutsNoHelpkey=TRUE
+MiscShowRelaunchDialog=TRUE
+MiscNewTabAdjacent=FALSE
+MiscSearchDialogOpacity=100
+MiscShowUnsafePasteDialog=FALSE

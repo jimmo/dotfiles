@@ -9,8 +9,13 @@
 	{ "keys": ["ctrl+k", "d"], "command": "duplicate_line" },
 	// Replace close-tab shortcut now used by delete-whole-word.
 	{ "keys": ["ctrl+k", "w"], "command": "close" },
+	{ "keys": ["ctrl+k", "ctrl+w"], "command": "close_all" },
 	// Simpler "yank".
 	{ "keys": ["ctrl+k", "y"], "command": "yank" },
+	// Delete (zap) to bracket.
+	{ "keys": ["ctrl+k", ")"], "command": "run_macro_file", "args": {"file": "res://Packages/User/Delete to Bracket.sublime-macro"} },
+	{ "keys": ["ctrl+k", "'"], "command": "run_macro_file", "args": {"file": "res://Packages/User/Delete to Symbol.sublime-macro"} },
+
 
 	// Always use incremental find.
 	{ "keys": ["ctrl+f"], "command": "show_panel", "args": {"panel": "incremental_find", "reverse": false } },

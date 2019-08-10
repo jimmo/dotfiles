@@ -38,13 +38,13 @@
 		"draw_active"
 	],
 	"indent_to_bracket": true,
+	"match_brackets": false,
+	"match_tags": false,
 	"preview_on_click": false,
 	"shift_tab_unindent": true,
 	"show_minimap": false,
 	"spell_check": true,
 	"theme": "Default.sublime-theme",
 	"translate_tabs_to_spaces": true,
-	"trim_trailing_white_space_on_save": true,
-	"match_brackets": false,
-	"match_tags": false,
+	"trim_trailing_white_space_on_save": true
 }
