@@ -6,7 +6,7 @@
 	editor = s -w
 
 [credential]
-	helper = store
+	helper = /usr/bin/pass-git-helper
 
 [color]
 	diff = auto
@@ -30,3 +30,9 @@
 
 [pull]
 	rebase = true
+
+[sendemail]
+	smtpserver = smtp.gmail.com
+	smtpuser = jim.mussared@gmail.com
+	smtpencryption = tls
+	smtpserverport = 587
