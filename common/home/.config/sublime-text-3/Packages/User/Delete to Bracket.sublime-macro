@@ -1,0 +1,4 @@
+[
+	{"command": "move_to", "args": {"to": "brackets", "forward": true, "extend": true } },
+    {"command": "right_delete"}
+]
