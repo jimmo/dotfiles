@@ -125,11 +125,10 @@ function unusbkey() {
 }
 
 function enter-venv() {
-  if [ -d venv ]; then
-    mv venv .venv
-  fi
   if [ -d .venv ]; then
     source .venv/bin/activate
+  elif [ -d venv ]; then
+    source venv/bin/activate
   else
     python3 -m venv .venv
     source .venv/bin/activate
