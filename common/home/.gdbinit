@@ -24,3 +24,16 @@ end
 document cls
   Clears the screen with a simple command.
 end
+
+define bm-attach
+  target extended-remote /dev/ttyACM0
+  monitor tpwr enable
+  monitor swdp_scan
+  attach 1
+  set mem inaccessible-by-default off
+end
+
+define bm-load
+  set mem inaccessible-by-default off
+  load
+end
