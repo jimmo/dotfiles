@@ -6,9 +6,11 @@
 	"installed_packages":
 	[
 		"A File Icon",
-		"BracketHighlighter",
 		"Deselect",
 		"Package Control",
+		"Select Quoted",
+		"SelectUntil",
+		"SyncedSideBar",
 		"TypeScript"
 	]
 }

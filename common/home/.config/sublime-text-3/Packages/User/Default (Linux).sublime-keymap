@@ -14,21 +14,21 @@
 	{ "keys": ["ctrl+k", "y"], "command": "yank" },
 	// Delete (zap) to bracket.
 	{ "keys": ["ctrl+k", ")"], "command": "run_macro_file", "args": {"file": "res://Packages/User/Delete to Bracket.sublime-macro"} },
-	{ "keys": ["ctrl+k", "'"], "command": "run_macro_file", "args": {"file": "res://Packages/User/Delete to Symbol.sublime-macro"} },
 
+	// Open include file.
+	{ "keys": ["alt+i"], "command": "open_include"},
+
+	// Select version of "zap".
+	{ "keys": ["alt+z"], "command": "select_until", "args": { "extend": true } },
+	// Select inside quites.
+	{"keys": ["ctrl+'"], "command": "select_quoted"},
+	// Select inside brackets (TODO: need new shortcut for focus_side_bar).
+	{"keys": ["ctrl+0"], "command": "expand_selection", "args": {"to": "brackets"} },
 
 	// Always use incremental find.
 	{ "keys": ["ctrl+f"], "command": "show_panel", "args": {"panel": "incremental_find", "reverse": false } },
-	// Make ctrl+g / ctrl+shift+g also incremental find next/prev. (To match e.g. Chrome)
-	{ "keys": ["ctrl+g"], "command": "find_next", "context": [
-		{ "key": "panel", "operand": "incremental_find"},
-		{ "key": "panel_visible" }
-	] },
-	{ "keys": ["ctrl+shift+g"], "command": "find_prev", "context": [
-		{ "key": "panel", "operand": "incremental_find"},
-		{ "key": "panel_visible" }
-	] },
-	// Also add ctrl+r for find_prev (easier to type).
+	{ "keys": ["ctrl+g"], "command": "find_next" },
+	// Also add ctrl+r for find_prev (easier to type than shift-f3).
 	{ "keys": ["ctrl+r"], "command": "find_prev", "context": [
 		{ "key": "panel", "operand": "incremental_find"},
 		{ "key": "panel_visible"}
@@ -45,6 +45,8 @@
 	{ "keys": ["ctrl+d"], "command": "right_delete" },
 	{ "keys": ["ctrl+a"], "command": "move_to", "args": {"to": "bol", "extend": false} },
 	{ "keys": ["ctrl+e"], "command": "move_to", "args": {"to": "eol", "extend": false} },
+	{ "keys": ["ctrl+shift+a"], "command": "move_to", "args": {"to": "bol", "extend": true} },
+	{ "keys": ["ctrl+shift+e"], "command": "move_to", "args": {"to": "eol", "extend": true} },
 	// Make tab re-indent line when the cursor isn't at the start of the line.
 	{ "keys": ["tab"], "command": "reindent", "context":
 		[
@@ -61,37 +63,13 @@
 	{ "keys": ["ctrl+k", "a"], "command": "select_all" },        // Was ctrl+a
 	{ "keys": ["ctrl+k", "e"], "command": "slurp_find_string" }, // Was ctrl+e
 
-	// Simpler goto chords. (Only enabled when panel (e.g. find) isn't visible, otherwise find_next will wait for the second part of the chord to not match)
-	// Goto line. (Which is what ctrl+g on its own is by default)
-	{ "keys": ["ctrl+g", "g"], "command": "show_overlay", "args": {"overlay": "goto", "text": ":"}, "context": [
-		{ "key": "panel_visible", "operand": false }
-	] },
-	{ "keys": ["ctrl+g", "l"], "command": "show_overlay", "args": {"overlay": "goto", "text": ":"}, "context": [
-		{ "key": "panel_visible", "operand": false }
-	] },
-	// Show current file in sidebar.
-	{ "keys": ["ctrl+g", "s"], "command": "reveal_in_side_bar", "context": [
-		{ "key": "panel_visible", "operand": false }
-	] },
+	// Goto line
+	{ "keys": ["alt+l"], "command": "show_overlay", "args": {"overlay": "goto", "text": ":"} },
+	{ "keys": ["alt+e"], "command": "show_overlay", "args": {"overlay": "goto", "text": ":"} },
 	// Goto definition.
-	{ "keys": ["ctrl+g", "d"], "command": "goto_definition", "context": [
-		{ "key": "panel_visible", "operand": false }
-	] },
+	{ "keys": ["alt+d"], "command": "goto_definition" },
 	// Goto reference(s).
-	{ "keys": ["ctrl+g", "r"], "command": "goto_reference", "context": [
-		{ "key": "panel_visible", "operand": false }
-	] },
-	// Jump back.
-	{ "keys": ["ctrl+g", "b"], "command": "jump_back", "context": [
-		{ "key": "panel_visible", "operand": false }
-	] },
-	// Git next/prev modification.
-	{ "keys": ["ctrl+g", "n"], "command": "next_modification", "context": [
-		{ "key": "panel_visible", "operand": false }
-	] },
-	{ "keys": ["ctrl+g", "p"], "command": "prev_modification", "context": [
-		{ "key": "panel_visible", "operand": false }
-	] },
+	{ "keys": ["alt+r"], "command": "goto_reference" },
 
 	// Vim must-haves. (Dot mode)
 	{ "keys": ["ctrl+."], "command": "repeat_since_movement" },
@@ -105,21 +83,5 @@
 		[
 			{ "key": "num_selections", "operator": "not_equal", "operand": 1 }
 		]
-	},
-
-	// Select text between brackets (using BracketHighlighter plugin).
-    {
-        "no_outside_adj": null,
-        "keys": ["ctrl+'"],
-        "command": "bh_key",
-        "args":
-        {
-            "lines" : true,
-            "plugin":
-            {
-                "type": ["__all__"],
-                "command": "bh_modules.bracketselect"
-            }
-        }
-    }
+	}
 ]
