@@ -48,7 +48,7 @@ fi
 
 # Enable color PS1 on xterm or if supported.
 if [ "$TERM" = "xterm" -o "$TERM" = "xterm-color" ] || [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-  PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]: \[\033[01;34m\]\w\[\033[00m\]$(__git_ps1 " (%s)")\n\A \$ '
+  PS1="\${debian_chroot:+($debian_chroot)}\$(if [ \$? == 0 ]; then echo ⛵; else echo 😱; fi)\[\033[01;32m\]\u@\h\[\033[00m\]: \[\033[01;34m\]\w\[\033[00m\]\$(__git_ps1 ' (⎇ %s)')\n\A \$ "
 
   # enable color support of ls and also add handy aliases
   if [ -x /usr/bin/dircolors ]; then
