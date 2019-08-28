@@ -21,6 +21,7 @@
 	pullr = pull --rebase
 	pushu = !git push -u origin `git symbolic-ref --short HEAD`
 	pushud = !git push -u origin :`git symbolic-ref --short HEAD`
+	btr = for-each-ref --sort=committerdate --format=%(refname:short) refs/heads/
 
 [push]
 	default = current
