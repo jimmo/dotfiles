@@ -34,3 +34,4 @@ MiscShowRelaunchDialog=TRUE
 MiscNewTabAdjacent=FALSE
 MiscSearchDialogOpacity=100
 MiscShowUnsafePasteDialog=FALSE
+ScrollingUnlimited=TRUE

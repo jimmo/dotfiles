@@ -140,3 +140,9 @@ alias xilinx='source /opt/Xilinx/14.7/ISE_DS/settings64.sh'
 
 alias pdf=google-chrome-stable
 alias chrome=google-chrome-stable
+
+alias ttyUSB='miniterm.py --raw /dev/ttyUSB0 115200'
+alias ttyUSB1='miniterm.py --raw /dev/ttyUSB1 115200'
+alias ttyACM='miniterm.py --raw /dev/ttyACM0 115200'
+alias ttyACM1='miniterm.py --raw /dev/ttyACM1 115200'
+alias ttyACM2='miniterm.py --raw /dev/ttyACM2 115200'
