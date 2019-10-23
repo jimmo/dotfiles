@@ -165,3 +165,7 @@ function find_gitignore() {
 
 # Force ag to additionally a parent .gitignore.
 alias agi='ag -p `find_gitignore ../`'
+
+# Parallel make.
+alias makep='make -j 16'
+alias pmakep='make -j 16'
