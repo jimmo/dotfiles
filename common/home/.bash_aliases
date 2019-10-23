@@ -26,9 +26,6 @@ alias takescreen='screen -D -R'
 
 alias scratch='cat > /dev/null'
 
-alias agi='sudo apt-get install'
-alias acs='apt-cache search'
-
 function replace() {
   sed "s,$1,$2,g"
 }
@@ -143,6 +140,28 @@ alias chrome=google-chrome-stable
 
 alias ttyUSB='miniterm.py --raw /dev/ttyUSB0 115200'
 alias ttyUSB1='miniterm.py --raw /dev/ttyUSB1 115200'
+alias ttyUSB2='miniterm.py --raw /dev/ttyUSB1 115200'
 alias ttyACM='miniterm.py --raw /dev/ttyACM0 115200'
 alias ttyACM1='miniterm.py --raw /dev/ttyACM1 115200'
 alias ttyACM2='miniterm.py --raw /dev/ttyACM2 115200'
+alias u0='miniterm.py --raw /dev/ttyUSB0 115200'
+alias u1='miniterm.py --raw /dev/ttyUSB1 115200'
+alias u2='miniterm.py --raw /dev/ttyUSB1 115200'
+alias a0='miniterm.py --raw /dev/ttyACM0 115200'
+alias a1='miniterm.py --raw /dev/ttyACM1 115200'
+alias a2='miniterm.py --raw /dev/ttyACM2 115200'
+
+function find_gitignore() {
+  if [ ${#1} -ge 10 ]; then
+    echo 'No .gitignore found.'
+    exit 1
+  fi
+  if [ -e "$1.gitignore" ]; then
+    echo "$1.gitignore"
+  else
+    find_gitignore "../$1"
+  fi
+}
+
+# Force ag to additionally a parent .gitignore.
+alias agi='ag -p `find_gitignore ../`'

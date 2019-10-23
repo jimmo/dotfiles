@@ -22,6 +22,10 @@
 	pushu = !git push -u origin `git symbolic-ref --short HEAD`
 	pushud = !git push -u origin :`git symbolic-ref --short HEAD`
 	btr = for-each-ref --sort=committerdate --format=%(refname:short) refs/heads/
+	amend = commit --amend
+	amendadd = commit -a --amend
+	continue = rebase --continue
+	rebase-master = rebase -i origin/master
 
 [push]
 	default = current
