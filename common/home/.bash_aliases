@@ -168,4 +168,4 @@ alias agi='ag -p `find_gitignore ../`'
 
 # Parallel make.
 alias makep='make -j 16'
-alias pmakep='make -j 16'
+alias pmake='make -j 16'
