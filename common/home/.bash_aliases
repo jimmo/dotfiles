@@ -169,3 +169,10 @@ alias agi='ag -p `find_gitignore ../`'
 # Parallel make.
 alias makep='make -j 16'
 alias pmake='make -j 16'
+
+# MicroPython.
+alias pmake_sf2='make -j 16 BOARD=PYBD_SF2'
+alias pmake_sf6='make -j 16 BOARD=PYBD_SF6'
+alias pmake_v11='make -j 16 BOARD=PYBV11'
+alias pmake_esp32='make -j 16 BOARD=GENERIC'
+alias pmake_tp='make -j 16 BOARD=TINYPICO'
