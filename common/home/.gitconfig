@@ -41,3 +41,8 @@
 	smtpuser = jim.mussared@gmail.com
 	smtpencryption = tls
 	smtpserverport = 587
+[mergetool "smerge"]
+	cmd = smerge mergetool \"$BASE\" \"$LOCAL\" \"$REMOTE\" -o \"$MERGED\"
+	trustExitCode = true
+[merge]
+	tool = smerge
