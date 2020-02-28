@@ -3,7 +3,8 @@ bindsym $mod+g exec google-chrome-stable
 for_window [class="Google-chrome"] border pixel 1
 
 # screen lock
-bindsym $mod+l exec xscreensaver-command -lock
+#bindsym $mod+l exec xscreensaver-command -lock
+bindsym $mod+l exec systemctl suspend
 
 # network manager
 exec nm-applet

@@ -13,6 +13,6 @@ xset dpms 120 0 0
 eval $(ssh-agent -s)
 ssh-add ~/.ssh/id_rsa
 
-xscreensaver &
+#xscreensaver &
 
 udiskie &
