@@ -35,3 +35,4 @@ MiscNewTabAdjacent=FALSE
 MiscSearchDialogOpacity=100
 MiscShowUnsafePasteDialog=FALSE
 ScrollingUnlimited=TRUE
+TitleMode=TERMINAL_TITLE_HIDE

@@ -7,7 +7,8 @@ bindsym $mod+g exec google-chrome-stable --force-device-scale-factor=1.25
 for_window [class="Google-chrome"] border pixel 1
 
 # screen lock
-bindsym $mod+l exec xscreensaver-command -lock
+#bindsym $mod+l exec xscreensaver-command -lock
+bindsym $mod+l exec systemctl suspend
 
 # network manager
 exec nm-applet

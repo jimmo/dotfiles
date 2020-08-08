@@ -103,6 +103,37 @@ function github() {
   cd $proj
 }
 
+function gg() {
+    # foo/bar --> foo.*/.*bar
+    query1=$(echo ${1} | sed 's,/,.*/.*,g')
+    # foo/bar --> f.*o.*o.*/.*b.*a.*r.*
+    query2=$(echo ${1} | sed 's/\(.\)/\1.*/g')
+
+    github=$HOME/src/github.com
+
+    n=$((cd ${github}; ls -d */*) | grep "${query1}" | wc -l)
+
+    if [ ${n} -eq 1 ]; then
+        cd ${github}/$((cd ${github}; ls -d */*) | grep "${query1}")
+        return
+    fi
+
+    n=$((cd ${github}; ls -d */*) | grep "${query2}" | wc -l)
+
+    if [ ${n} -eq 1 ]; then
+        cd ${github}/$((cd ${github}; ls -d */*) | grep "${query2}")
+    fi
+
+    if [ ${n} -eq 0 ]; then
+        echo 'No matches'
+    fi
+
+    if [ ${n} -gt 1 ]; then
+        echo 'More than one match:'
+        (cd ${github}; ls -d */*) | grep "${query2}"
+    fi
+}
+
 function microbit() {
   device=`lsblk -o NAME,VENDOR,MODEL | grep MBED | grep VFS | cut -d' ' -f1 | head -n1`
   if [ -z $device ]; then
