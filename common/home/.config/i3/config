@@ -2,7 +2,7 @@ set $mod Mod4
 
 floating_modifier $mod
 
-exec compton -bCG
+exec compton -i 1.0 -bCG
 
 # class                 border  backgr. text    indicator child_border
 client.focused          #507040 #318c2f #ffffff #2e9ef4   #285577

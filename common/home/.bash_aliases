@@ -111,27 +111,21 @@ function gg() {
 
     github=$HOME/src/github.com
 
-    n=$((cd ${github}; ls -d */*) | grep "${query1}" | wc -l)
+    n=$((cd ${github}; ls -d */*) | grep -i "${query1}" | wc -l)
 
     if [ ${n} -eq 1 ]; then
-        cd ${github}/$((cd ${github}; ls -d */*) | grep "${query1}")
+        cd ${github}/$((cd ${github}; ls -d */*) | grep -i "${query1}")
         return
     fi
 
-    n=$((cd ${github}; ls -d */*) | grep "${query2}" | wc -l)
+    n=$((cd ${github}; ls -d */*) | grep -i "${query2}" | wc -l)
 
-    if [ ${n} -eq 1 ]; then
-        cd ${github}/$((cd ${github}; ls -d */*) | grep "${query2}")
+    if [ ${n} -gt 0 ]; then
+        cd ${github}/$((cd ${github}; ls -d */*) | grep -i "${query2}" | while read line; do echo "${#line} ${line}"; done | sort -n | cut -d' ' -f2 | head -n 1)
+        return
     fi
 
-    if [ ${n} -eq 0 ]; then
-        echo 'No matches'
-    fi
-
-    if [ ${n} -gt 1 ]; then
-        echo 'More than one match:'
-        (cd ${github}; ls -d */*) | grep "${query2}"
-    fi
+    echo 'No matches'
 }
 
 function microbit() {
