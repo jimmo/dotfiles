@@ -14,6 +14,7 @@
 	branch = auto
 
 [alias]
+	commit = commit -s
 	st = state
 	co = checkout
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
@@ -46,3 +47,6 @@
 	trustExitCode = true
 [merge]
 	tool = smerge
+
+[commit]
+	template = ~/.gittemplate
