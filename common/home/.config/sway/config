@@ -1,9 +1,19 @@
+font pango:Noto Sans Mono 11
+
 set $mod Mod4
 set $term xfce4-terminal
 
 floating_modifier $mod normal
 
 output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+
+# class                 border  backgr. text    indicator child_border
+client.focused          #507040 #318c2f #ffffff #2e9ef4   #285577
+client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
+client.unfocused        #333333 #222222 #888888 #292d2e   #222222
+client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+client.background       #ffffff
 
 # Input configuration.
 input "type:keyboard" {
@@ -16,7 +26,7 @@ input "type:keyboard" {
 xwayland enable
 
 # Brightness / colour temp.
-exec gammastep-indicator -g 1.1 -t 3200:4800 -b 1.0:0.6
+exec gammastep-indicator -g 1.15 -t 3200:5200 -b 1.0:0.6
 
 # Open terminals.
 bindsym $mod+Return exec $term
@@ -100,10 +110,10 @@ bindsym $mod+minus scratchpad show
 
 # Resize.
 mode "resize" {
-    bindsym Left resize shrink width 10px
-    bindsym Down resize grow height 10px
-    bindsym Up resize shrink height 10px
-    bindsym Right resize grow width 10px
+    bindsym Left resize shrink width 50px
+    bindsym Down resize grow height 50px
+    bindsym Up resize shrink height 50px
+    bindsym Right resize grow width 50px
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
@@ -119,10 +129,12 @@ bar {
     # The default just shows the current date and time.
     status_command while date +'%Y-%m-%d %l:%M:%S %p'; do sleep 1; done
 
+    font pango:Noto Sans Mono 11
+
     colors {
         statusline #ffffff
         background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
+        focused_workspace #507040 #318c2f #ffffff
     }
 }
 
