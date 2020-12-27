@@ -1,0 +1,25 @@
+general {
+    colors = true
+    interval = 1
+    output_format = i3bar
+}
+
+order += "ethernet enp31s0"
+order += "ipv6"
+order += "volume master"
+order += "tztime local"
+
+ethernet enp31s0 {
+    format_up = "E: %ip (%speed)"
+    format_down = "E: down"
+}
+
+tztime local {
+    format = "⏲ %Y-%m-%d %H:%M:%S"
+}
+
+volume master {
+    format = "🎶 %volume"
+    format_muted = "🎶 muted (%volume)"
+    device = "pulse:0"
+}
