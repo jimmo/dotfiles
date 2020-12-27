@@ -1,8 +1,13 @@
 #!/bin/sh
 # shell script to prepend i3status with more stuff
 
+XCLIP="xclip -o"
+if [ -z $DISPLAY ]; then
+    XCLIP="wl-paste -p"
+fi
+
 i3status | while read line; do
-    export CLIP=`xclip -o | cut -c1-20 | tr -d '\n'`
+    export CLIP=`$XCLIP | cut -c1-20 | tr -d '\n'`
     echo $line | python3 -c '
 import json
 import os
