@@ -26,7 +26,7 @@ input "type:keyboard" {
 xwayland enable
 
 # Brightness / colour temp.
-exec gammastep-indicator -g 1.15 -t 3200:5200 -b 1.0:0.6
+exec gammastep-indicator -t 5800:3200
 
 # Open terminals.
 bindsym $mod+Return exec $term

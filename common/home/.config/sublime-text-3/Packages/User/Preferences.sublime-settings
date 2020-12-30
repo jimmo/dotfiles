@@ -31,6 +31,10 @@
 		"*.sublime-workspace"
 	],
 	"font_face": "Noto Sans Mono",
+	"font_options":
+	[
+		"gray_antialias"
+	],
 	"font_size": 13,
 	"ignored_packages":
 	[

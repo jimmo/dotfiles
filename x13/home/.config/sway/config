@@ -15,3 +15,5 @@ input "type:touchpad" {
     natural_scroll disabled
     dwt enabled
 }
+
+output eDP-1 scale_filter nearest subpixel rgb
