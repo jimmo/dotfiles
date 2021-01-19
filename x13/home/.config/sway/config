@@ -16,4 +16,4 @@ input "type:touchpad" {
     dwt enabled
 }
 
-output eDP-1 scale_filter nearest subpixel rgb
+output eDP-1 scale_filter nearest subpixel none

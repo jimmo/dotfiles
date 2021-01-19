@@ -10,4 +10,4 @@ bindsym XF86AudioMute exec pamixer --toggle-mute && ( pamixer --get-mute && echo
 # Sleep.
 bindsym $mod+l exec systemctl suspend
 
-output DP-1 subpixel rgb scale_filter nearest
+output DP-1 subpixel none scale_filter nearest
