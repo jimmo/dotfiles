@@ -92,4 +92,7 @@ if [ $DIFF_ONLY -eq 0 ]; then
     # Compile .emacs --> .emacs.elc
     update_script=$PWD/update-emacs.el
     (cd ~; emacs -nw -q --script $update_script)
+
+    # Update gnome settings
+    dconf load / < ~/.config/gnome-settings
 fi

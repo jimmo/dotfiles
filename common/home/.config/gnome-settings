@@ -1,4 +1,15 @@
-# `date`
+[org/gnome/desktop/input-sources]
+sources=[('xkb', 'us')]
+xkb-options=['lv3:ralt_switch', 'caps:ctrl_modifier']
+
+[org/gnome/desktop/peripherals/keyboard]
+delay=uint32 200
+repeat-interval=uint32 20
+
+[org/gnome/desktop/peripherals/touchpad]
+tap-to-click=true
+two-finger-scrolling-enabled=true
+
 [org/gnome/desktop/wm/keybindings]
 begin-move=@as []
 begin-resize=@as []
@@ -53,17 +64,45 @@ switch-to-workspace-last=@as []
 switch-to-workspace-up=@as []
 toggle-maximized=@as []
 unmaximize=@as []
+
 [org/gnome/desktop/wm/preferences]
 auto-raise=true
 button-layout='appmenu:close'
 focus-mode='sloppy'
 num-workspaces=10
-[org/gnome/desktop/peripherals/touchpad]
-tap-to-click=true
-two-finger-scrolling-enabled=true
-[org/gnome/desktop/peripherals/keyboard]
-delay=uint32 200
-repeat-interval=uint32 20
+
+[org/gnome/mutter]
+attach-modal-dialogs=false
+dynamic-workspaces=false
+edge-tiling=false
+workspaces-only-on-primary=false
+
+[org/gnome/mutter/keybindings]
+toggle-tiled-left=['']
+toggle-tiled-right=['']
+
+[org/gnome/mutter/wayland/keybindings]
+restore-shortcuts=['']
+
+[org/gnome/settings-daemon/plugins/media-keys]
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']
+www=['<Super>g']
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0]
+binding='<Super>Return'
+command='xfce4-terminal'
+name='Launch Terminal'
+
+[org/gnome/settings-daemon/plugins/xsettings]
+antialiasing='grayscale'
+hinting='slight'
+
+[org/gnome/shell/extensions/paperwm]
+has-installed-config-template=true
+horizontal-margin=0
+vertical-margin=0
+window-gap=0
+
 [org/gnome/shell/extensions/paperwm/keybindings]
 close-window=@as []
 cycle-height=@as []
@@ -102,3 +141,19 @@ switch-up-workspace=@as []
 toggle-scratch=['<Shift><Super>s']
 toggle-scratch-layer=['<Super>s']
 toggle-scratch-window=@as []
+
+[org/gnome/shell/keybindings]
+focus-active-notification=@as []
+open-application-menu=@as []
+switch-to-application-1=['']
+switch-to-application-2=['']
+switch-to-application-3=['']
+switch-to-application-4=['']
+switch-to-application-5=['']
+switch-to-application-6=['']
+switch-to-application-7=['']
+switch-to-application-8=['']
+switch-to-application-9=['']
+toggle-application-view=['']
+toggle-message-tray=@as []
+toggle-overview=['']
