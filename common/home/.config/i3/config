@@ -16,12 +16,10 @@ client.background       #ffffff
 bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+o exec i3-sensible-terminal -x octave-cli
 bindsym $mod+Shift+p exec i3-sensible-terminal -x python3
+bindsym $mod+Shift+m exec mathematica
 
 # screenshot
 bindsym $mod+Shift+s exec xfce4-screenshooter
-
-# zoom
-bindsym $mod+Shift+m exec xmag -source 256x144
 
 # get i3 commands
 bindsym $mod+c exec i3-input
