@@ -1,3 +1,11 @@
+# Keyboard
+exec xset r rate 200 60
+exec xset dpms 120 0 0
+
+# Redshift
+exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
+exec redshift-gtk
+
 # start chrome
 bindsym $mod+g exec google-chrome-stable
 for_window [class="Google-chrome"] border pixel 1
@@ -10,6 +18,7 @@ bindsym $mod+l exec systemctl suspend
 exec nm-applet
 
 # volume control
-bindsym XF86AudioMute exec amixer -c 1 -- sset Master toggle
-bindsym XF86AudioLowerVolume exec amixer -c 1 -- sset Master playback 5dB-
-bindsym XF86AudioRaiseVolume exec amixer -c 1 -- sset Master playback 5dB+
+bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%- && pkill -RTMIN+10 i3blocks
+bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 5%+ && pkill -RTMIN+10 i3blocks
+bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN+10 i3blocks
+bindsym XF86AudioMicMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN+10 i3blocks
