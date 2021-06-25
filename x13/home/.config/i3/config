@@ -17,8 +17,9 @@ bindsym $mod+l exec systemctl suspend
 # network manager
 exec nm-applet
 
-# touchpad
+# touchpad (tapping enable, weird zone thing disable)
 exec xinput set-prop 'ETPS/2 Elantech Touchpad' 312 1
+exec xinput set-prop 'ETPS/2 Elantech Touchpad' "libinput Click Method Enabled" 0 0
 
 # volume control
 bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%- && pkill -RTMIN+10 i3blocks
