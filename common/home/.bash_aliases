@@ -175,6 +175,7 @@ alias u2='miniterm.py --raw /dev/ttyUSB1 115200'
 alias a0='miniterm.py --raw /dev/ttyACM0 115200'
 alias a1='miniterm.py --raw /dev/ttyACM1 115200'
 alias a2='miniterm.py --raw /dev/ttyACM2 115200'
+alias mpr=/home/jimmo/src/github.com/micropython/micropython/tools/mpremote/mpremote.py
 
 function find_gitignore() {
   if [ ${#1} -ge 10 ]; then
