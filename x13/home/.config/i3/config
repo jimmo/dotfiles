@@ -7,23 +7,19 @@ exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 exec redshift-gtk
 
 # start chrome
-bindsym $mod+g exec google-chrome-unstable --force-device-scale-factor=1.25
+bindsym $mod+g exec google-chrome-stable --force-device-scale-factor=1.25
 for_window [class="Google-chrome"] border pixel 1
 
 # screen lock
-#bindsym $mod+l exec xscreensaver-command -lock
 bindsym $mod+l exec systemctl suspend
-
-# network manager
-exec nm-applet
 
 # touchpad (tapping enable, weird zone thing disable)
 exec xinput set-prop 'ETPS/2 Elantech Touchpad' 312 1
 exec xinput set-prop 'ETPS/2 Elantech Touchpad' "libinput Click Method Enabled" 0 0
 
 # volume control
-bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%- && pkill -RTMIN+10 i3blocks
-bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 5%+ && pkill -RTMIN+10 i3blocks
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume '@DEFAULT_SINK@' -5% && pkill -RTMIN+10 i3blocks
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume '@DEFAULT_SINK@' +5% && pkill -RTMIN+10 i3blocks
 bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN+10 i3blocks
 bindsym XF86AudioMicMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN+10 i3blocks
 
