@@ -1,0 +1,6 @@
+// These settings override both User and Default settings for the reStructuredText syntax
+{
+    "word_wrap": false,
+    "wrap_width": 80,
+    "rulers": [],
+}

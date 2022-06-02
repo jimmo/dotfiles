@@ -1,7 +1,11 @@
 {
 	"added_words":
 	[
-		"initialisation"
+		"initialisation",
+		"specialised",
+		"maximises",
+		"analysing",
+		"analysed",
 	],
 	"auto_complete_commit_on_tab": true,
 	"auto_find_in_selection": true,
@@ -35,7 +39,7 @@
 	[
 		"gray_antialias"
 	],
-	"font_size": 13,
+	"font_size": 16,
 	"ignored_packages":
 	[
 		"Vintage",

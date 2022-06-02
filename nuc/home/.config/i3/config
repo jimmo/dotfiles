@@ -7,7 +7,7 @@ exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 exec redshift-gtk
 
 # start chrome
-bindsym $mod+g exec google-chrome-stable
+bindsym $mod+g exec google-chrome-stable --force-device-scale-factor=1.5
 for_window [class="Google-chrome"] border pixel 1
 
 # screen lock

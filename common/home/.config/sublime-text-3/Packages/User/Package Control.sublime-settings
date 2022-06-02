@@ -6,6 +6,7 @@
 	"installed_packages":
 	[
 		"A File Icon",
+		"BracketHighlighter",
 		"Deselect",
 		"Kotlin",
 		"LaTeX-cwl",
@@ -15,6 +16,6 @@
 		"SelectUntil",
 		"Swift",
 		"SyncedSideBar",
-		"TypeScript"
+		"TypeScript",
 	],
 }
