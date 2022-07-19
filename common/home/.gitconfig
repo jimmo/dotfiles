@@ -27,6 +27,11 @@
 	amendadd = commit -a --amend
 	continue = rebase --continue
 	rebase-master = rebase -i origin/master
+	rmi = rebase-master
+	fo = fetch origin
+	detach-master = checkout --detach origin/master
+	dm = detach-master
+	fodm = !git fo && git dm
 
 [push]
 	default = current
