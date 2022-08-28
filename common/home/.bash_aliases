@@ -26,6 +26,8 @@ alias takescreen='screen -D -R'
 
 alias scratch='cat > /dev/null'
 
+alias s='subl -n'
+
 function replace() {
   sed "s,$1,$2,g"
 }
@@ -103,7 +105,7 @@ function github() {
   cd $proj
 }
 
-function gg() {
+function gj() {
     # foo/bar --> foo.*/.*bar
     query1=$(echo ${1} | sed 's,/,.*/.*,g')
     # foo/bar --> f.*o.*o.*/.*b.*a.*r.*
@@ -127,6 +129,8 @@ function gg() {
 
     echo 'No matches'
 }
+
+alias gg='git grep'
 
 function microbit() {
   device=`lsblk -o NAME,VENDOR,MODEL | grep MBED | grep VFS | cut -d' ' -f1 | head -n1`
@@ -194,3 +198,4 @@ alias agi='ag -p `find_gitignore ../`'
 
 # Parallel make for ex-Googlers.
 alias blaze='make -j 16'
+alias blazed='make -j 16 DEBUG=1'

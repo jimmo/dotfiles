@@ -3,7 +3,7 @@
 	email = jim.mussared@gmail.com
 
 [core]
-	editor = s -w
+	editor = subl -n -w
 
 [credential]
 	helper = /usr/bin/pass-git-helper
@@ -14,24 +14,28 @@
 	branch = auto
 
 [alias]
-	commit = commit -s
-	st = state
+	amend = commit --amend
+	amendadd = commit -a --amend
+	btr = for-each-ref --sort=committerdate --format=%(refname:short) refs/heads/
 	co = checkout
+	commit = commit -s
+	continue = rebase --continue
+	detach-master = checkout --detach origin/master
+	dm = detach-master
+	fo = fetch origin
+	fodm = !git fo && git dm
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
-	undo = reset --soft HEAD^
+	pf = push -f
+	pj = push -u jimmo
 	pullr = pull --rebase
 	pushu = !git push -u origin `git symbolic-ref --short HEAD`
 	pushud = !git push -u origin :`git symbolic-ref --short HEAD`
-	btr = for-each-ref --sort=committerdate --format=%(refname:short) refs/heads/
-	amend = commit --amend
-	amendadd = commit -a --amend
-	continue = rebase --continue
 	rebase-master = rebase -i origin/master
 	rmi = rebase-master
-	fo = fetch origin
-	detach-master = checkout --detach origin/master
-	dm = detach-master
-	fodm = !git fo && git dm
+	s = status
+	st = state
+	undo = reset --soft HEAD^
+	resetdammit = reset --hard HEAD
 
 [push]
 	default = current

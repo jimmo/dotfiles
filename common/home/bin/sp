@@ -30,5 +30,5 @@ if [ ! -e $PROJ ]; then
 EOF
 fi
 
-s -p $PROJ
+subl -n -p $PROJ
 

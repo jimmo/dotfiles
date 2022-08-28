@@ -1,0 +1,7 @@
+[
+    // Switch files in visited history with buttons 4 and 5.
+    { "button": "button8", "command": "jump_back" },
+    { "button": "button9", "command": "jump_forward" },
+    { "button": "button8", "modifiers": ["ctrl"], "command": "prev_view_in_stack" },
+    { "button": "button9", "modifiers": ["ctrl"], "command": "next_view_in_stack" },
+]

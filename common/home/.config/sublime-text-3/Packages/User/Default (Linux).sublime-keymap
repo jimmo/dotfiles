@@ -83,5 +83,9 @@
 		[
 			{ "key": "num_selections", "operator": "not_equal", "operand": 1 }
 		]
-	}
+	},
+
+	// Jump back/forward
+	{ "keys": ["ctrl+alt+left"], "command": "jump_back" },
+	{ "keys": ["ctrl+alt+right"], "command": "jump_forward" }
 ]
