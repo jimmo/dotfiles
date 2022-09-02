@@ -21,8 +21,9 @@ bindsym $mod+Shift+m exec mathematica
 # screenshot
 bindsym $mod+Shift+s exec xfce4-screenshooter
 
-# get i3 commands
-bindsym $mod+c exec i3-input
+# clipboard manager
+exec --no-startup-id greenclip daemon>/dev/null
+bindsym $mod+c exec --no-startup-id rofi -modi "clipboard:greenclip print" -show clipboard
 
 # kill focused window
 bindsym $mod+Shift+q kill
