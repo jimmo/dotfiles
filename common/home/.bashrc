@@ -75,6 +75,9 @@ esac
 if [ -f ~/.bash_aliases ]; then
   . ~/.bash_aliases
 fi
+if [ -f ~/.micropython_completion.bash ]; then
+  . ~/.micropython_completion.bash
+fi
 
 # Enable programmable completion features.
 if ! shopt -oq posix; then

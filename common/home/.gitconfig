@@ -56,6 +56,7 @@
 	trustExitCode = true
 [merge]
 	tool = smerge
+	ff = only
 
 [commit]
 	template = ~/.gittemplate
