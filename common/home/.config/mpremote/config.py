@@ -26,7 +26,11 @@ commands = {
     "ifconfig": [
             "exec",
             "import network; sta_if = network.WLAN(network.STA_IF); print(sta_if.ifconfig())",
-    ]
+    ],
+    "iperf3_server": [
+            "exec",
+            "import iperf3; iperf3.server()",
+    ],
 }
 
 try:
