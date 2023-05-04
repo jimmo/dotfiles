@@ -33,6 +33,8 @@ bindsym $mod+f exec firefox
 
 # discord
 bindsym $mod+Shift+d exec discord
+# beeper
+bindsym $mod+Shift+b exec beeper
 
 # change focus
 #bindsym $mod+j focus left

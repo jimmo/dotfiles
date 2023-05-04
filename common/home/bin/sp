@@ -8,7 +8,7 @@ if [ -z $1 ]; then
     NAME=${PWD##*/}
     if [ ! -e "${HOME}/src/sublime-projects/${NAME}.sublime-project" ]; then
         # But if that doesn't exist, use grantparent/parent for new ones.
-        NAME=`pwd | egrep -o '[^/]*/[^/]*$' | tr / _`
+        NAME=`pwd | grep -E -o '[^/]*/[^/]*$' | tr / _`
     fi
 else
     NAME=$1

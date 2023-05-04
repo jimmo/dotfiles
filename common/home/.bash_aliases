@@ -199,3 +199,12 @@ alias agi='ag -p `find_gitignore ../`'
 # Parallel make for ex-Googlers.
 alias blaze='make -j 16'
 alias blazed='make -j 16 DEBUG=1'
+
+function mcd() {
+  mkdir $1
+  cd $1
+}
+
+function lsacm() {
+  ls /dev/ttyACM* /dev/ttyUSB*
+}

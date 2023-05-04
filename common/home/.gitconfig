@@ -17,6 +17,7 @@
 	amend = commit --amend
 	amendadd = commit -a --amend
 	btr = for-each-ref --sort=committerdate --format=%(refname:short) refs/heads/
+	casm = commit -asm
 	co = checkout
 	commit = commit -s
 	continue = rebase --continue
