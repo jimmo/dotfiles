@@ -8,9 +8,6 @@ instance=Master
 interval=once
 signal=10
 
-# Memory usage
-#
-# The type defaults to "mem" if the instance is not specified.
 [memory]
 label=
 separator=false

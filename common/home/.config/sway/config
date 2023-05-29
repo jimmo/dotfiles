@@ -26,12 +26,20 @@ input "type:keyboard" {
 xwayland enable
 
 # Brightness / colour temp.
-exec gammastep-indicator -t 5800:3200
+exec gammastep-indicator -t 5800:4200 -l -33.88:151.18
 
-# Open terminals.
+# Open apps.
 bindsym $mod+Return exec $term
 bindsym $mod+Shift+o exec $term -x octave-cli
 bindsym $mod+Shift+p exec $term -x python3
+
+bindsym $mod+Shift+m exec mathematica
+bindsym $mod+f exec env MOZ_ENABLE_WAYLAND=1 firefox
+bindsym $mod+Shift+d exec discord --ozone-platform-hint=auto --enable-features=WaylandWindowDecorations --enable-webrtc-pipewire-capturer
+bindsym $mod+Shift+b exec beeper --ozone-platform-hint=auto --enable-features=WaylandWindowDecorations --enable-webrtc-pipewire-capturer
+
+# Put default MicroPython device into bootloader
+bindsym $mod+b exec /home/jimmo/src/github.com/micropython/micropython/tools/mpremote/mpremote.py bl
 
 # Kill current window.
 bindsym $mod+Shift+q kill
@@ -125,9 +133,9 @@ bar {
     position bottom
     mode hide
 
-    status_command $HOME/bin/my_i3status.sh
+    status_command i3blocks
 
-    font pango:Noto Sans Mono 11
+    font pango:Noto Sans Mono 12
 
     colors {
         statusline #ffffff

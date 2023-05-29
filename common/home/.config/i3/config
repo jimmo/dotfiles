@@ -29,12 +29,12 @@ bindsym $mod+c exec --no-startup-id rofi -modi "clipboard:greenclip print" -show
 bindsym $mod+Shift+q kill
 
 # firefox
-bindsym $mod+f exec firefox
+bindsym $mod+f exec env MOZ_ENABLE_WAYLAND=1 firefox
 
 # discord
-bindsym $mod+Shift+d exec discord
+bindsym $mod+Shift+d exec discord --ozone-platform-hint=auto --enable-features=WaylandWindowDecorations --enable-webrtc-pipewire-capturer
 # beeper
-bindsym $mod+Shift+b exec beeper
+bindsym $mod+Shift+b exec beeper --ozone-platform-hint=auto --enable-features=WaylandWindowDecorations --enable-webrtc-pipewire-capturer
 
 # change focus
 #bindsym $mod+j focus left
