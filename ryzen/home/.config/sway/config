@@ -1,6 +1,7 @@
-bindsym $mod+g exec google-chrome-stable --enable-features=UseOzonePlatform --ozone-platform=wayland --force-device-scale-factor=1.5
+bindsym $mod+g exec google-chrome-stable --enable-features=UseOzonePlatform --ozone-platform=wayland
+# --force-device-scale-factor=1.5
 
-exec mkfifo $SWAYSOCK.wob && tail -f $SWAYSOCK.wob | wob
+exec rm -f $SWAYSOCK.wob && mkfifo $SWAYSOCK.wob && (tail -f $SWAYSOCK.wob | wob)
 
 bindsym XF86AudioRaiseVolume exec pamixer -ui 2 && pamixer --get-volume > $SWAYSOCK.wob
 bindsym XF86AudioLowerVolume exec pamixer -ud 2 && pamixer --get-volume > $SWAYSOCK.wob
@@ -12,3 +13,7 @@ bindsym $mod+l exec systemctl suspend
 output DP-1 subpixel none scale_filter nearest
 
 exec swayidle -w timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"'
+
+exec udiskie
+
+exec dunst

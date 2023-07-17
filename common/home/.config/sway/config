@@ -41,6 +41,8 @@ bindsym $mod+Shift+b exec beeper --ozone-platform-hint=auto --enable-features=Wa
 # Put default MicroPython device into bootloader
 bindsym $mod+b exec /home/jimmo/src/github.com/micropython/micropython/tools/mpremote/mpremote.py bl
 
+bindsym $mod+Shift+s exec /home/jimmo/bin/ss
+
 # Kill current window.
 bindsym $mod+Shift+q kill
 
