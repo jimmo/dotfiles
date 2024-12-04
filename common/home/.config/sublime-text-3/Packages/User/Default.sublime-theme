@@ -33,4 +33,12 @@
         "class": "tab_label",
         "font.size": 14,
     },
+    {
+        "class": "scroll_track_control",
+        "content_margin": [7, 4, 7, 4]
+    },
+    {
+        "class": "puck_control",
+        "layer0.tint": "hsl(0, 0%, 0%)",
+    }
 ]

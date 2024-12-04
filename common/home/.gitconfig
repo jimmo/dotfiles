@@ -22,9 +22,12 @@
 	commit = commit -s
 	continue = rebase --continue
 	detach-master = checkout --detach origin/master
+	detach-main = checkout --detach origin/main
 	dm = detach-master
+	dmain = detach-main
 	fo = fetch origin
 	fodm = !git fo && git dm
+	fodmain = !git fo && git dmain
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
 	pf = push -f
 	pj = push -u jimmo
@@ -37,6 +40,8 @@
 	st = state
 	undo = reset --soft HEAD^
 	resetdammit = reset --hard HEAD
+	wip = commit -asm WIP
+	wiprmi = !git wip && git rmi
 
 [push]
 	default = current

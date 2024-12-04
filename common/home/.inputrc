@@ -4,11 +4,13 @@ $if Bash
   Space: magic-space
   C-Space: shell-expand-line
   C-M-c: insert-comment
-  "\e[B": history-search-forward
-  "\e[A": history-search-backward
 $endif
 
-$if Gdb
-  "\e[B": history-search-forward
-  "\e[A": history-search-backward
-$endif
+"\e[B": history-search-forward
+"\e[A": history-search-backward
+
+set blink-matching-paren on
+set colored-stats on
+set colored-completion-prefix on
+set skip-completed-text on
+

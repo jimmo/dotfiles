@@ -6,7 +6,9 @@
 	"installed_packages":
 	[
 		"A File Icon",
+		"CMake",
 		"Deselect",
+		"Devicetree DTS Highlighting",
 		"Kotlin",
 		"LaTeX-cwl",
 		"LaTeXing",

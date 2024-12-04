@@ -101,3 +101,7 @@ if [ -d $HOME/bin ]; then
 fi
 
 export GOPATH=$HOME
+
+PATH=$PATH:$HOME/.config/emacs/bin
+
+eval "$(zoxide init --cmd cd bash)"
