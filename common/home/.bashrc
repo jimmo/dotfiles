@@ -100,6 +100,10 @@ if [ -d $HOME/bin ]; then
   PATH=$PATH:$HOME/bin
 fi
 
+if [ -d $HOME/.local/bin ]; then
+  PATH=$PATH:$HOME/.local/bin
+fi
+
 export GOPATH=$HOME
 
 PATH=$PATH:$HOME/.config/emacs/bin

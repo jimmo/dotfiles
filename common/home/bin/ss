@@ -1,2 +1,2 @@
 #!/bin/sh
-grim -g "$(slurp)" $HOME/screenshot.png
+grim -g "$(slurp)" ${HOME}/screenshot-$(date --iso-8601=seconds).png

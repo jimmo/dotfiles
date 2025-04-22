@@ -1,5 +1,4 @@
-bindsym $mod+g exec google-chrome-unstable --enable-features=UseOzonePlatform --ozone-platform=wayland
-bindsym $mod+f exec env GDK_BACKEND=wayland firefox
+bindsym $mod+g exec google-chrome-stable --enable-features=UseOzonePlatform --ozone-platform=wayland
 
 exec mkfifo $SWAYSOCK.wob && tail -f $SWAYSOCK.wob | wob
 
@@ -17,3 +16,11 @@ input "type:touchpad" {
 }
 
 output eDP-1 scale_filter nearest subpixel none
+
+bindsym $mod+l exec systemctl suspend
+
+exec swayidle -w timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"'
+
+exec udiskie
+
+exec dunst
