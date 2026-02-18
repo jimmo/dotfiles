@@ -134,20 +134,11 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-# Sway bar.
+# Use waybar
 bar {
     position bottom
     mode hide
-
-    status_command i3blocks
-
-    font pango:Noto Sans Mono 12
-
-    colors {
-        statusline #ffffff
-        background #323232
-        focused_workspace #507040 #318c2f #ffffff
-    }
+    swaybar_command waybar
 }
 
 include /etc/sway/config.d/*
