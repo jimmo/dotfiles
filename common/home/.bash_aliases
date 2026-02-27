@@ -208,3 +208,7 @@ function mcd() {
 function lsacm() {
   ls /dev/ttyACM* /dev/ttyUSB*
 }
+
+function fixscreen() {
+  (export $(cat /proc/`pgrep -o firefox`/environ | tr '\0' '\n' | grep SWAYSOCK); swaymsg 'output * power off'; sleep 1; swaymsg 'output * power on')
+}
